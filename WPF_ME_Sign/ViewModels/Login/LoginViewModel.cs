@@ -12,7 +12,7 @@ namespace WPF_ME_Sign.ViewModels.Login
     {
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand<object>(o => LoginExecute(), o => LoginCanExecute());
+            LoginCommand = new RelayCommand(LoginExecute, LoginCanExecute);
         }
     }
 }
