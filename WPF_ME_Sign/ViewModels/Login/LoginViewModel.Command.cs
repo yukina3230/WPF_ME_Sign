@@ -29,6 +29,6 @@ namespace WPF_ME_Sign.ViewModels.Login
                 MessageBox.Show("Wrong User Id or Password");
             }
         }
-        private bool LoginCanExecute() => (UserId != "" && Password != "") ? true : false;
+        private bool LoginCanExecute() => (!String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(Password)) ? true : false;
     }
 }
