@@ -51,7 +51,7 @@
                 </Grid.ColumnDefinitions>
                 <ui:Button Grid.Column="0" Width="140" Height="40" Margin="0 45 0 0"
                            HorizontalAlignment="Right" VerticalAlignment="Top"
-                           Content="LOGIN" Command="{Binding LoginCommand}">
+                           Content="LOGIN" Command="{Binding LoginCommand}" IsDefault="True">
                 </ui:Button>
             </Grid>
         </Grid>

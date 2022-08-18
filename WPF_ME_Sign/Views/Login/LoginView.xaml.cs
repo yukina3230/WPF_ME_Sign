@@ -26,7 +26,6 @@ namespace WPF_ME_Sign.Views.Login
             InitializeComponent();
             loginVM = new LoginViewModel();
             DataContext = loginVM;
-
         }
 
         private void passwordBox_TextChanged(object sender, TextChangedEventArgs e)
