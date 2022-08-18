@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using CommunityToolkit.Mvvm.Input;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,10 @@ namespace WPF_ME_Sign.ViewModels.Login
     {
         public LoginViewModel()
         {
-            var _loginCanExecute = this.WhenAnyValue(x => x.UserId, (userId) => !string.IsNullOrEmpty(userId));
-            LoginCommand = ReactiveCommand.Create(LoginExecute, _loginCanExecute);
+            //var _loginCanExecute = this.WhenAnyValue(x => x.UserId, (userId) => !string.IsNullOrEmpty(userId));
+            //LoginCommand = ReactiveCommand.Create(LoginExecute, _loginCanExecute);
+
+            LoginCommand = new RelayCommand<object>(o => LoginExecute(), o => LoginCanExecute());
         }
     }
 }

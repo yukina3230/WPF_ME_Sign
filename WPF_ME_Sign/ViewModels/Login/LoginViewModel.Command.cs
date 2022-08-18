@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using CommunityToolkit.Mvvm.Input;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace WPF_ME_Sign.ViewModels.Login
 {
     public partial class LoginViewModel
     {
-        public ICommand LoginCommand { get; }
+        //public ICommand LoginCommand { get; }
+        public RelayCommand<object> LoginCommand { get; }
 
         private void LoginExecute()
         {
@@ -24,9 +26,9 @@ namespace WPF_ME_Sign.ViewModels.Login
             }
             else
             {
-                MessageBox.Show("Wrong UserId or Password");
+                MessageBox.Show("Wrong User Id or Password");
             }
         }
-        //private IObservable<bool> _loginCanExecute { get => _loginCanExecute; set { this.WhenAnyValue(x => x.UserId, (userId) => !string.IsNullOrEmpty(userId)); } }
+        private bool LoginCanExecute() => (UserId != "" && Password != "") ? true : false;
     }
 }
