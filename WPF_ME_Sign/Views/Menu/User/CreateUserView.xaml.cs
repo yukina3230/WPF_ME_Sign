@@ -11,20 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WPF_ME_Sign.ViewModels.Login;
+using WPF_ME_Sign.ViewModels.Menu.User;
 
-namespace WPF_ME_Sign.Views.Login
+namespace WPF_ME_Sign.Views.Menu.User
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for CreateUserView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class CreateUserView : Window
     {
-        private LoginViewModel _viewModel;
-        public LoginView()
+        private CreateUserViewModel _viewModel;
+        public CreateUserView()
         {
             InitializeComponent();
-            _viewModel = new LoginViewModel();
+            _viewModel = new CreateUserViewModel();
             DataContext = _viewModel;
         }
 

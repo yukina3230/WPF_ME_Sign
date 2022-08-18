@@ -33,12 +33,12 @@ namespace WPF_ME_Sign.Models.Repositories
                 _command.Parameters.Add("userId", userId);
                 _command.Parameters.Add("password", password);
                 if (_command.ExecuteScalar() != null) _userId = _command.ExecuteScalar().ToString(); else _userId = "";
-                _conn.Close();
+                _conn.Dispose();
                 return _userId;
             }
             catch (Exception ex)
             {
-                _conn.Close();
+                _conn.Dispose();
                 return ex.ToString();
             }
         }

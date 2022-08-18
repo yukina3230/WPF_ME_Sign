@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_ME_Sign.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+        Title="MainView" Height="600" Width="1000"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        Style="{StaticResource UiWindow}"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ui:TitleBar Grid.Row="0" Title="Main"></ui:TitleBar>
+        <StackPanel Grid.Row="1">
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="New"></MenuItem>
+                    <MenuItem Header="Open"></MenuItem>
+                    <MenuItem Header="Save"></MenuItem>
+                    <Separator></Separator>
+                    <MenuItem Header="Exit"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="User">
+                    <MenuItem Header="Create New User" Command="{Binding MenuCreateUserCommand}"></MenuItem>
+                    <MenuItem Header="Change Password"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <TabControl></TabControl>
+            <Grid></Grid>
+        </StackPanel>
     </Grid>
 </Window>
