@@ -12,9 +12,15 @@ namespace WPF_ME_Sign.Models
         public string Password { get; set; }
         public string UserName { get; set; }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public string Department { get; set; }
         public string Email { get; set; }
 =======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
         public string Dept { get; set; }
 
