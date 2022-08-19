@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +12,7 @@ namespace WPF_ME_Sign.ViewModels.Login
 {
     public partial class LoginViewModel
     {
-        //public ICommand LoginCommand { get; }
-        public RelayCommand<object> LoginCommand { get; }
+        public RelayCommand LoginCommand { get; }
 
         private void LoginExecute()
         {

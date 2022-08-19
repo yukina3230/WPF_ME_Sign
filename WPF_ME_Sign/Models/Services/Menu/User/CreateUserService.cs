@@ -30,5 +30,8 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
             };
         }
 
+        public bool Create() => _createaUserRepository.AddNewUser(_user);
+
+        public ObservableCollection<string> LoadDeptList() => _createaUserRepository.LoadDeptList();
     }
 }

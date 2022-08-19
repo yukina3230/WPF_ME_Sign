@@ -12,8 +12,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
     {
         public RelayCommand CreateUserCommand { get; }
 
-
-
         private void CreateUserExecute()
         {
             CreateUserService _createUserService = new CreateUserService(UserId, Password, UserName, Dept, Email, RoleId, CreateDate);
