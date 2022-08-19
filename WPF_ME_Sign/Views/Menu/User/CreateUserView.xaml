@@ -46,9 +46,10 @@
                 <TextBlock Grid.Row="4" Grid.Column="0" Text="Department:"></TextBlock>
                 <TextBlock Grid.Row="5" Grid.Column="0" Text="Role:"></TextBlock>
                 <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding UserId}"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Password}"></TextBox>
                 <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding UserName}"></TextBox>
                 <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Email}"></TextBox>
-                <ComboBox Grid.Row="4" Grid.Column="1" Width="100" HorizontalAlignment="Right" ItemsSource="{Binding DeptList}"></ComboBox>
+                <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding DeptList}" SelectedItem="{Binding Dept}" Width="150" HorizontalAlignment="Right"></ComboBox>
                 <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding RoleId}"></TextBox>
             </Grid>
             <Grid Grid.Row="1" Margin="40 0">

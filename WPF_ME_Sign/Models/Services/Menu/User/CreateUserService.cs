@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.Models.Repositories.Menu.User;
 
 namespace WPF_ME_Sign.Models.Services.Menu.User
@@ -18,15 +19,18 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
             _createaUserRepository = new CreateUserRepository();
         }
 
-        public CreateUserService(string userId, string password, string userName, string deptName, string email, string roleId, DateTime createDate)
+        public CreateUserService(string userId, string password, string userName, string deptName, string email, string roleId, DateTime _createDate)
         {
             _createaUserRepository = new CreateUserRepository();
             _user = new UserModel()
             {
                 UserId = userId,
-                Password = password,
+                Password = EncodeHelper.EncodeString(password),
                 UserName = userName,
-                CreateDate = createDate.Date
+                Dept = deptName,
+                Email = email,
+                RoleId = roleId,
+                CreateDate = _createDate.Date.ToString("ddMMyyyy")
             };
         }
 

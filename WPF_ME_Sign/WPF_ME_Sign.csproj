@@ -8,13 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Interfaces\**" />
+    <EmbeddedResource Remove="Models\Interfaces\**" />
+    <None Remove="Models\Interfaces\**" />
+    <Page Remove="Models\Interfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.70" />
     <PackageReference Include="WPF-UI" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Interfaces\" />
     <Folder Include="Models\Repositories\SQL\" />
   </ItemGroup>
 

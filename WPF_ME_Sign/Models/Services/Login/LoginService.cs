@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WPF_ME_Sign.Models.Repositories;
 
-namespace WPF_ME_Sign.Models.Services
+namespace WPF_ME_Sign.Models.Services.Login
 {
     public class LoginService
     {

@@ -30,7 +30,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         public string RoleId { get => _RoleId; set { _RoleId = value; OnPropertyChanged(); CreateUserCommand.NotifyCanExecuteChanged(); } }
 
         private DateTime _CreateDate;
-        public DateTime CreateDate { get => _CreateDate; set { _CreateDate = value; OnPropertyChanged(); CreateUserCommand.NotifyCanExecuteChanged(); } }
 
         private ObservableCollection<string> _DeptList;
         public ObservableCollection<string> DeptList { get => _DeptList; set { _DeptList = value; OnPropertyChanged(); } }

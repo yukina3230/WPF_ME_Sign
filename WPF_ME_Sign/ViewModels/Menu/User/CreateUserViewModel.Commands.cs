@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPF_ME_Sign.Models.Services.Menu.User;
 
 namespace WPF_ME_Sign.ViewModels.Menu.User
@@ -14,13 +15,17 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private void CreateUserExecute()
         {
-            CreateUserService _createUserService = new CreateUserService(UserId, Password, UserName, Dept, Email, RoleId, CreateDate);
-            _createUserService.Create();
+            _createUserService = new CreateUserService(UserId, Password, UserName, Dept, Email, RoleId, _CreateDate);
+            if (_createUserService.Create()) MessageBox.Show("Create Success"); else MessageBox.Show("Something Wrong");
         }
 
         private bool CreateUserCanExecute()
         {
-            if (!String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(Password) && !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(Email))
+            bool canExecute =
+                !String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(Password)
+                && !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(Dept)
+                && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(RoleId);
+            if (canExecute)
             {
                 return true;
             }

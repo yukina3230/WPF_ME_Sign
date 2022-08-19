@@ -14,6 +14,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         public CreateUserViewModel()
         {
+            _CreateDate = DateTime.Now.Date;
+
             _createUserService = new CreateUserService();
             DeptList = _createUserService.LoadDeptList();
 

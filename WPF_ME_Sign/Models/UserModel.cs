@@ -20,6 +20,6 @@ namespace WPF_ME_Sign.Models
 
         public string RoleId { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        public string CreateDate { get; set; }
     }
 }
