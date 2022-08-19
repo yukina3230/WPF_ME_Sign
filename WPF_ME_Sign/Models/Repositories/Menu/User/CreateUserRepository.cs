@@ -52,9 +52,9 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                     MessageBox.Show(ex.ToString());
                 }
 
-                return false;
-            }
+            return false;
         }
+    }
 
         public ObservableCollection<string> LoadDeptList()
         {

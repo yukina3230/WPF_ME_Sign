@@ -32,13 +32,13 @@ namespace WPF_ME_Sign.Models.Repositories
                 _command = new OracleCommand(_cmdStr, _conn);
                 _command.Parameters.Add("userId", userId);
                 _command.Parameters.Add("password", password);
-                _userId = _command.ExecuteScalar().ToString();
-                _conn.Close();
+                if (_command.ExecuteScalar() != null) _userId = _command.ExecuteScalar().ToString(); else _userId = "";
+                _conn.Dispose();
                 return _userId;
             }
             catch (Exception ex)
             {
-                _conn.Close();
+                _conn.Dispose();
                 return ex.ToString();
             }
         }

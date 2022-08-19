@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_ME_Sign.ViewModels;
 
 namespace WPF_ME_Sign.Views
 {
@@ -19,9 +20,12 @@ namespace WPF_ME_Sign.Views
     /// </summary>
     public partial class MainView : Window
     {
+        private MainViewModel _viewModel;
         public MainView()
         {
             InitializeComponent();
+            _viewModel = new MainViewModel();
+            DataContext = _viewModel;
         }
     }
 }

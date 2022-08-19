@@ -26,15 +26,9 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
                 UserId = userId,
                 Password = password,
                 UserName = userName,
-                Dept = deptName,
-                Email = email,
-                RoleId = roleId,
                 CreateDate = createDate.Date
             };
         }
 
-        public bool Create() => _createaUserRepository.AddNewUser(_user) ? true : false;
-
-        public ObservableCollection<string> LoadDeptList() => _createaUserRepository.LoadDeptList();
     }
 }

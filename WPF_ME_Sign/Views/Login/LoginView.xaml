@@ -41,8 +41,8 @@
                     </Style>
                 </Grid.Resources>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="User Id:"></TextBlock>
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding UserId}"></TextBox>
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Password:"></TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding UserId}"></TextBox>
                 <ui:PasswordBox Grid.Row="1" Grid.Column="1" x:Name="passwordBox" TextChanged="passwordBox_TextChanged"></ui:PasswordBox>
             </Grid>
             <Grid Grid.Row="2" Margin="40 0">
@@ -51,7 +51,7 @@
                 </Grid.ColumnDefinitions>
                 <ui:Button Grid.Column="0" Width="140" Height="40" Margin="0 45 0 0"
                            HorizontalAlignment="Right" VerticalAlignment="Top"
-                           Content="LOGIN" Command="{Binding LoginCommand}">
+                           Content="LOGIN" Command="{Binding LoginCommand}" IsDefault="True">
                 </ui:Button>
             </Grid>
         </Grid>

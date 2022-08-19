@@ -27,5 +27,10 @@ namespace WPF_ME_Sign.Views.Menu.User
             _viewModel = new CreateUserViewModel();
             DataContext = _viewModel;
         }
+
+        private void passwordBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _viewModel.Password = passwordBox.Password;
+        }
     }
 }

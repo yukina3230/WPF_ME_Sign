@@ -20,18 +20,17 @@ namespace WPF_ME_Sign.Views.Login
     /// </summary>
     public partial class LoginView : Window
     {
-        LoginViewModel loginVM;
+        private LoginViewModel _viewModel;
         public LoginView()
         {
             InitializeComponent();
-            loginVM = new LoginViewModel();
-            DataContext = loginVM;
-
+            _viewModel = new LoginViewModel();
+            DataContext = _viewModel;
         }
 
         private void passwordBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            loginVM.Password = passwordBox.Password;
+            _viewModel.Password = passwordBox.Password;
         }
     }
 }
