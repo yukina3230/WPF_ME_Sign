@@ -11,10 +11,10 @@ namespace WPF_ME_Sign.Models.Repositories
 {
     public class LoginRepository
     {
-        private string _connStr;
-        private string _cmdStr;
-        private OracleConnection _conn;
-        private OracleCommand _command;
+        string _connStr;
+        string _cmdStr;
+        OracleConnection _conn;
+        OracleCommand _command;
 
         public LoginRepository()
         {

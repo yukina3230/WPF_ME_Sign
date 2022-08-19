@@ -11,7 +11,17 @@ namespace WPF_ME_Sign.Models
         public string UserId { get; set; }
         public string Password { get; set; }
         public string UserName { get; set; }
+<<<<<<< Updated upstream
         public string Department { get; set; }
         public string Email { get; set; }
+=======
+
+        public string Dept { get; set; }
+
+        public string Email { get; set; }
+        public string RoleId { get; set; }
+
+        public DateTime CreateDate { get; set; }
+>>>>>>> Stashed changes
     }
 }

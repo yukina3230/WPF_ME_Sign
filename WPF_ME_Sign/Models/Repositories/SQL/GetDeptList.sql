@@ -1,0 +1,2 @@
+select department_name
+from me_department
