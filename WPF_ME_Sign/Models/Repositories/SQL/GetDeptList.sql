@@ -1,2 +1,2 @@
-select department_name
+select *
 from me_department

@@ -16,7 +16,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         private void CreateUserExecute()
         {
             _createUserService = new CreateUserService(UserId, Password, UserName, Dept, Email, RoleId, _CreateDate);
-            if (_createUserService.Create()) MessageBox.Show("Create Success"); else MessageBox.Show("Something Wrong");
+            if (_createUserService.Create()) MessageBox.Show("Success"); else MessageBox.Show("Something Wrong!");
         }
 
         private bool CreateUserCanExecute()

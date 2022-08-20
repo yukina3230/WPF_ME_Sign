@@ -16,7 +16,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <ui:TitleBar Grid.Row="0" Title="Create New User" CanMaximize="False"></ui:TitleBar>
-        <Grid Grid.Row="1">
+        <!--<Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"></RowDefinition>
                 <RowDefinition Height="3*"></RowDefinition>
@@ -61,6 +61,102 @@
                            Content="CREATE" Command="{Binding CreateUserCommand}" IsDefault="True">
                 </ui:Button>
             </Grid>
+        </Grid>-->
+        <Grid>
+            <StackPanel>
+                <StackPanel>
+                    <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Center">
+                        <!-- <Image Source="/Resources/user (1).png" />-->
+                        <TextBlock Text="Create New User" FontSize="30" HorizontalAlignment="Left"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <Border  BorderBrush="Silver" BorderThickness="1" CornerRadius="10" Margin="20,0,20,0">
+                    <StackPanel Height="100" Orientation="Vertical">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Row="0" Grid.Column="0">
+                                <TextBlock Text="User ID" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="1" Height="37" VerticalAlignment="Top">
+                                <TextBox x:Name="txtUserID" ></TextBox>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="3">
+                                <TextBox x:Name="txtPassword"></TextBox>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="2">
+                                <TextBlock Text="Password" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="0">
+                                <TextBlock Text="Department" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="1">
+                                <ComboBox x:Name="cbxDept"
+                      ItemsSource="{Binding DeptList}"  
+                      DisplayMemberPath="{Binding DeptName}" SelectedValuePath="{Binding DeptId}">
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="2">
+                                <TextBlock Text="Role" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="3">
+                                <TextBox x:Name="txtRole"></TextBox>
+                            </StackPanel>
+
+                        </Grid>
+
+                    </StackPanel>
+                </Border>
+                <StackPanel Height="60" Orientation="Vertical" Margin="15">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="2">
+                            <Button Content="Add" FontSize="20" HorizontalAlignment="Center"></Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="3">
+                            <Button Content="Edit" FontSize="20" HorizontalAlignment="Center"></Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="4">
+                            <Button Content="Del" FontSize="20" HorizontalAlignment="Center"></Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="5">
+                            <Button Content="Clean" FontSize="20" HorizontalAlignment="Center"></Button>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Height="200">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0">
+                            <DataGrid HorizontalAlignment="Center" Margin="12,10,0,0" ItemsSource="{Binding UserList}" Height="200" Width= "700" />
+
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

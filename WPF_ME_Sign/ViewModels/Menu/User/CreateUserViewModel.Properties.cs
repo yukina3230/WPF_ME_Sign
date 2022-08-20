@@ -6,6 +6,7 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPF_ME_Sign.Models;
 
 namespace WPF_ME_Sign.ViewModels.Menu.User
 {
@@ -31,7 +32,10 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private DateTime _CreateDate;
 
-        private ObservableCollection<string> _DeptList;
-        public ObservableCollection<string> DeptList { get => _DeptList; set { _DeptList = value; OnPropertyChanged(); } }
+        private ObservableCollection<DeptModel> _DeptList;
+        public ObservableCollection<DeptModel> DeptList { get => _DeptList; set { _DeptList = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<UserModel> _UserList;
+        public ObservableCollection<UserModel> UserList { get => _UserList; set { _UserList = value; OnPropertyChanged(); } }
     }
 }
