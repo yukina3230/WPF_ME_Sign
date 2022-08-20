@@ -42,6 +42,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 _command.Parameters.Add("email", user.Email);
                 _command.Parameters.Add("roleId", user.RoleId);
                 _command.Parameters.Add("create_date", user.CreateDate);
+                _command.Parameters.Add("status", "A");
                 return (_command.ExecuteScalar() != null) ? true : false;
                 _conn.Close();
             }
@@ -55,6 +56,36 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
         }
 
         public ObservableCollection<DeptModel> LoadDeptList()
+        {
+            ObservableCollection<DeptModel> _deptList = new ObservableCollection<DeptModel>();
+            _cmdStr = FileHelper.GetSQLString("GetDeptList");
+
+            try
+            {
+                _conn.Open();
+                _command = new OracleCommand(_cmdStr, _conn);
+                _dataAdapter = new OracleDataAdapter(_command);
+                _dataTable = new DataTable();
+
+                if (_dataAdapter.Fill(_dataTable) > 0)
+                {
+                    foreach (DataRow row in _dataTable.Rows)
+                    {
+                        _deptList.Add(new DeptModel() { DeptId = row["department_id"].ToString(), DeptName = row["department_name"].ToString() });
+                    }
+                }
+                _conn.Close();
+            }
+            catch (Exception ex)
+            {
+                _conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+            return _deptList;
+        }
+
+        public ObservableCollection<DeptModel> LoadRoleList()
         {
             ObservableCollection<DeptModel> _deptList = new ObservableCollection<DeptModel>();
             _cmdStr = FileHelper.GetSQLString("GetDeptList");
@@ -109,7 +140,8 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                                 Dept = row["dept"].ToString(),
                                 Email = row["email"].ToString(),
                                 RoleId = row["role_id"].ToString(),
-                                CreateDate = row["create_date"].ToString()
+                                CreateDate = row["create_date"].ToString(),
+                                Status = row["status"].ToString()
                             }
                         );
                     }

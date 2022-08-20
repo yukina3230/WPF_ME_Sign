@@ -144,12 +144,16 @@
                             <DataGrid HorizontalAlignment="Stretch"
                                       ItemsSource="{Binding UserList}"
                                       AutoGenerateColumns="False" CanUserAddRows="False">
+                                <DataGrid.Resources>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="Foreground" Value="Black"></Setter>
+                                    </Style>
+                                </DataGrid.Resources>
                                 <DataGrid.RowStyle>
                                     <Style TargetType="{x:Type DataGridRow}">
                                         <Style.Triggers>
                                             <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="Background" Value="DarkBlue"/>
-                                                <Setter Property="Foreground" Value="White"/>
+                                                <Setter Property="Background" Value="LightBlue"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -161,6 +165,7 @@
                                     <DataGridTextColumn Header="Email" Binding="{Binding Email}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="User Role" Binding="{Binding RoleId}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Create Date" Binding="{Binding CreateDate}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Status" Binding="{Binding Status}"></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>

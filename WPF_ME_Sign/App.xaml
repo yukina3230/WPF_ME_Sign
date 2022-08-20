@@ -10,7 +10,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ui:ThemesDictionary Theme="Light"></ui:ThemesDictionary>
+                <ui:ThemesDictionary Theme="Dark"></ui:ThemesDictionary>
                 <ui:ControlsDictionary></ui:ControlsDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

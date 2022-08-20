@@ -5,7 +5,8 @@ insert into me_user (
         dept,
         email,
         role_id,
-        create_date
+        create_date,
+        status
     )
 values (
         :userId,
@@ -14,5 +15,6 @@ values (
         :dept,
         :email,
         :roleId,
-        to_date(:create_date, 'ddMMyyyy')
+        to_date(:create_date, 'ddMMyyyy'),
+        :status
     )
