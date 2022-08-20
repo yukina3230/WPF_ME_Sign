@@ -5,17 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_ME_Sign.Views.Menu.User"
         mc:Ignorable="d"
-        Title="CreateUserView" Height="500" Width="600"
+        Title="CreateUserView" Height="600" Width="800"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         Style="{StaticResource UiWindow}"
-        WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ui:TitleBar Grid.Row="0" Title="Create New User" CanMaximize="False"></ui:TitleBar>
+        <ui:TitleBar Grid.Row="0" Title="Create New User"></ui:TitleBar>
         <!--<Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"></RowDefinition>
@@ -70,7 +69,7 @@
                         <TextBlock Text="Create New User" FontSize="30" HorizontalAlignment="Left"></TextBlock>
                     </StackPanel>
                 </StackPanel>
-                <Border  BorderBrush="Silver" BorderThickness="1" CornerRadius="10" Margin="20,0,20,0">
+                <Border BorderBrush="Silver" BorderThickness="1" CornerRadius="10" Margin="20,0,20,0">
                     <StackPanel Height="100" Orientation="Vertical">
                         <Grid Margin="10">
                             <Grid.RowDefinitions>
@@ -88,10 +87,10 @@
                                 <TextBlock Text="User ID" FontSize="20" HorizontalAlignment="Center"></TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="1" Height="37" VerticalAlignment="Top">
-                                <TextBox x:Name="txtUserID" ></TextBox>
+                                <TextBox></TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="3">
-                                <TextBox x:Name="txtPassword"></TextBox>
+                                <TextBox></TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="2">
                                 <TextBlock Text="Password" FontSize="20" HorizontalAlignment="Center"></TextBlock>
@@ -100,10 +99,7 @@
                                 <TextBlock Text="Department" FontSize="20" HorizontalAlignment="Center"></TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="1">
-                                <ComboBox x:Name="cbxDept"
-                      ItemsSource="{Binding DeptList}"  
-                      DisplayMemberPath="{Binding DeptName}" SelectedValuePath="{Binding DeptId}">
-                                </ComboBox>
+                                <ComboBox ItemsSource="{Binding DeptList}" DisplayMemberPath="{Binding DeptName}" SelectedValuePath="{Binding DeptId}"></ComboBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="2">
                                 <TextBlock Text="Role" FontSize="20" HorizontalAlignment="Center"></TextBlock>
@@ -111,9 +107,7 @@
                             <StackPanel Grid.Row="1" Grid.Column="3">
                                 <TextBox x:Name="txtRole"></TextBox>
                             </StackPanel>
-
                         </Grid>
-
                     </StackPanel>
                 </Border>
                 <StackPanel Height="60" Orientation="Vertical" Margin="15">
@@ -126,33 +120,44 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Row="0" Grid.Column="2">
+                        <StackPanel Grid.Row="0" Grid.Column="0">
                             <Button Content="Add" FontSize="20" HorizontalAlignment="Center"></Button>
                         </StackPanel>
-                        <StackPanel Grid.Row="0" Grid.Column="3">
+                        <StackPanel Grid.Row="0" Grid.Column="1">
                             <Button Content="Edit" FontSize="20" HorizontalAlignment="Center"></Button>
                         </StackPanel>
-                        <StackPanel Grid.Row="0" Grid.Column="4">
+                        <StackPanel Grid.Row="0" Grid.Column="2">
                             <Button Content="Del" FontSize="20" HorizontalAlignment="Center"></Button>
                         </StackPanel>
-                        <StackPanel Grid.Row="0" Grid.Column="5">
+                        <StackPanel Grid.Row="0" Grid.Column="3">
                             <Button Content="Clean" FontSize="20" HorizontalAlignment="Center"></Button>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Height="200">
+                <StackPanel Orientation="Vertical" Margin="20">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
-                            <DataGrid HorizontalAlignment="Center" Margin="12,10,0,0" ItemsSource="{Binding UserList}" Height="200" Width= "700" />
-
+                            <DataGrid HorizontalAlignment="Stretch"
+                                      ItemsSource="{Binding UserList}"
+                                      AutoGenerateColumns="True" CanUserAddRows="False">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="DarkBlue"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </StackPanel>
                     </Grid>
                 </StackPanel>

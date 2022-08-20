@@ -19,6 +19,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
             _createUserService = new CreateUserService();
             DeptList = _createUserService.LoadDeptList();
+            UserList = _createUserService.LoadUserList();
 
             CreateUserCommand = new RelayCommand(CreateUserExecute, CreateUserCanExecute);
         }
