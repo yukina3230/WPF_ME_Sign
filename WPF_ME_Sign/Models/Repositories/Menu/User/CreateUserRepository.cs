@@ -38,12 +38,12 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 _command.Parameters.Add("userId", user.UserId);
                 _command.Parameters.Add("password", user.Password);
                 _command.Parameters.Add("userName", user.UserName);
-                _command.Parameters.Add("dept", user.Dept);
+                _command.Parameters.Add("dept", user.DeptName);
                 _command.Parameters.Add("email", user.Email);
-                _command.Parameters.Add("roleId", user.RoleId);
+                _command.Parameters.Add("roleId", user.RoleName);
                 _command.Parameters.Add("create_date", user.CreateDate);
                 _command.Parameters.Add("status", "A");
-                return (_command.ExecuteScalar() != null) ? true : false;
+                return (_command.ExecuteNonQuery() > 0) ? true : false;
                 _conn.Close();
             }
             catch (Exception ex)
@@ -85,10 +85,10 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
             return _deptList;
         }
 
-        public ObservableCollection<DeptModel> LoadRoleList()
+        public ObservableCollection<RoleModel> LoadRoleList()
         {
-            ObservableCollection<DeptModel> _deptList = new ObservableCollection<DeptModel>();
-            _cmdStr = FileHelper.GetSQLString("GetDeptList");
+            ObservableCollection<RoleModel> _deptList = new ObservableCollection<RoleModel>();
+            _cmdStr = FileHelper.GetSQLString("GetRoleList");
 
             try
             {
@@ -101,7 +101,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 {
                     foreach (DataRow row in _dataTable.Rows)
                     {
-                        _deptList.Add(new DeptModel() { DeptId = row["department_id"].ToString(), DeptName = row["department_name"].ToString() });
+                        _deptList.Add(new RoleModel() { RoleId = row["role_id"].ToString(), RoleName = row["role_name"].ToString() });
                     }
                 }
                 _conn.Close();
@@ -137,9 +137,9 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                             {
                                 UserId = row["user_id"].ToString(),
                                 UserName = row["user_name"].ToString(),
-                                Dept = row["dept"].ToString(),
+                                DeptName = row["dept_name"].ToString(),
                                 Email = row["email"].ToString(),
-                                RoleId = row["role_id"].ToString(),
+                                RoleName = row["role_name"].ToString(),
                                 CreateDate = row["create_date"].ToString(),
                                 Status = row["status"].ToString()
                             }

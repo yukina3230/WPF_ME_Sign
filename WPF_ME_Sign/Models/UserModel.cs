@@ -14,11 +14,11 @@ namespace WPF_ME_Sign.Models
 
         public string UserName { get; set; }
 
-        public string Dept{ get; set; }
+        public string DeptName { get; set; }
 
         public string Email { get; set; }
 
-        public string RoleId { get; set; }
+        public string RoleName { get; set; }
 
         public string CreateDate { get; set; }
 

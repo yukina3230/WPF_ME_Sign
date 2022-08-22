@@ -27,9 +27,9 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
                 UserId = userId,
                 Password = EncodeHelper.EncodeString(password),
                 UserName = userName,
-                Dept = deptName,
+                DeptName = deptName,
                 Email = email,
-                RoleId = roleId,
+                RoleName = roleId,
                 CreateDate = _createDate.Date.ToString("ddMMyyyy")
             };
         }
@@ -37,6 +37,9 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
         public bool Create() => _createaUserRepository.AddNewUser(_user);
 
         public ObservableCollection<DeptModel> LoadDeptList() => _createaUserRepository.LoadDeptList();
+        public ObservableCollection<RoleModel> LoadRoleList() => _createaUserRepository.LoadRoleList();
         public ObservableCollection<UserModel> LoadUserList() => _createaUserRepository.LoadUserList();
+
+        
     }
 }

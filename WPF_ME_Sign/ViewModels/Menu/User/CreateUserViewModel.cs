@@ -19,9 +19,19 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
             _createUserService = new CreateUserService();
             DeptList = _createUserService.LoadDeptList();
+            RoleList = _createUserService.LoadRoleList();
             UserList = _createUserService.LoadUserList();
 
-            CreateUserCommand = new RelayCommand(CreateUserExecute, CreateUserCanExecute);
+            CreateUserCommand = new RelayCommand(CreateUserExecute, () => true);
+        }
+
+        public bool DetectFieldEmpty()
+        {
+            if (!String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(Password) && !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(DeptName) && !String.IsNullOrEmpty(RoleName))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

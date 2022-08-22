@@ -1,4 +1,5 @@
 insert into me_user (
+        me_user_id,
         user_id,
         password,
         user_name,
@@ -9,6 +10,7 @@ insert into me_user (
         status
     )
 values (
+        seq_me_user_id.nextval,
         :userId,
         :password,
         :userName,
