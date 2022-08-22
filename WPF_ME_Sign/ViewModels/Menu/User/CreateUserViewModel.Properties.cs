@@ -30,6 +30,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         public ObservableCollection<DeptModel> DeptList { get => _DeptList; set { _DeptList = value; OnPropertyChanged(); } }
         private string _DeptId;
         public string DeptId { get => _DeptId; set { _DeptId = value; OnPropertyChanged(); } }
+        private string _DeptName;
+        public string DeptName { get => _DeptName; set { _DeptName = value; OnPropertyChanged(); } }
 
         private ObservableCollection<RoleModel> _RoleList;
         public ObservableCollection<RoleModel> RoleList { get => _RoleList; set { _RoleList = value; OnPropertyChanged(); } }

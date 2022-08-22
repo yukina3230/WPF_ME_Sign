@@ -25,13 +25,31 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
             CreateUserCommand = new RelayCommand(CreateUserExecute, () => true);
         }
 
-        public bool DetectFieldEmpty()
+        private bool DetectFieldEmpty()
         {
-            if (!String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(Password) && !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(DeptName) && !String.IsNullOrEmpty(RoleName))
+            if (!String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(Password) && !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(DeptId) && !String.IsNullOrEmpty(RoleId))
             {
                 return true;
             }
             return false;
+        }
+
+        private void ClearField()
+        {
+            UserId = "";
+            Password = "";
+            UserName = "";
+            Email = "";
+        }
+
+        private string GetDeptNameById(string deptId)
+        {
+            return DeptList.First(item => item.DeptId == deptId).DeptName;
+        }
+
+        private string GetRoleNameById(string roleId)
+        {
+            return RoleList.First(item => item.RoleId == roleId).RoleName;
         }
     }
 }

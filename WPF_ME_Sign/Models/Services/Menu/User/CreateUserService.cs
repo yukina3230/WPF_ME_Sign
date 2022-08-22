@@ -19,7 +19,7 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
             _createaUserRepository = new CreateUserRepository();
         }
 
-        public CreateUserService(string userId, string password, string userName, string deptName, string email, string roleId, DateTime _createDate)
+        public CreateUserService(string userId, string password, string userName, string deptId, string email, string roleId, DateTime _createDate)
         {
             _createaUserRepository = new CreateUserRepository();
             _user = new UserModel()
@@ -27,7 +27,7 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
                 UserId = userId,
                 Password = EncodeHelper.EncodeString(password),
                 UserName = userName,
-                DeptName = deptName,
+                DeptId = deptId,
                 Email = email,
                 RoleName = roleId,
                 CreateDate = _createDate.Date.ToString("ddMMyyyy")

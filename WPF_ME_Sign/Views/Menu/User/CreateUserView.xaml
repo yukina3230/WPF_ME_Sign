@@ -174,9 +174,9 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="User Id" Binding="{Binding UserId}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="User Name" Binding="{Binding UserName}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Dept" Binding="{Binding Dept}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Department" Binding="{Binding DeptName}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Email" Binding="{Binding Email}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="User Role" Binding="{Binding RoleId}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Role" Binding="{Binding RoleName}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Create Date" Binding="{Binding CreateDate}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Status" Binding="{Binding Status}"></DataGridTextColumn>
                                 </DataGrid.Columns>

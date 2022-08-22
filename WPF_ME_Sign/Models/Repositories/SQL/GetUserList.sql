@@ -1,9 +1,11 @@
 select user_id,
     user_name,
-    (select dept_name from me_department where dept_name = dept_id) as dept_name,
+    department_name,
     email,
-    (select role_name from me_department where role_name = role_id) as role_name,
+    role_name,
     to_char(create_date, 'dd/MM/yyyy') as create_date,
-    status
+    me_user.status as status
 from me_user
-where status = 'A'
+    left join me_department on me_user.dept_id = me_department.department_id
+    left join me_role on me_user.role_id = me_role.role_id
+where me_user.status = 'A'

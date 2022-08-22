@@ -29,6 +29,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
 
         public bool AddNewUser(UserModel user)
         {
+            bool cmdResult = false;
             _cmdStr = FileHelper.GetSQLString("CreateUser");
 
             try
@@ -38,13 +39,14 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 _command.Parameters.Add("userId", user.UserId);
                 _command.Parameters.Add("password", user.Password);
                 _command.Parameters.Add("userName", user.UserName);
-                _command.Parameters.Add("dept", user.DeptName);
+                _command.Parameters.Add("deptId", user.DeptId);
                 _command.Parameters.Add("email", user.Email);
                 _command.Parameters.Add("roleId", user.RoleName);
                 _command.Parameters.Add("create_date", user.CreateDate);
                 _command.Parameters.Add("status", "A");
-                return (_command.ExecuteNonQuery() > 0) ? true : false;
+                cmdResult = (_command.ExecuteNonQuery() > 0) ? true : false;
                 _conn.Close();
+                return cmdResult;
             }
             catch (Exception ex)
             {
@@ -52,7 +54,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 MessageBox.Show(ex.ToString());
             }
 
-            return false;
+            return cmdResult;
         }
 
         public ObservableCollection<DeptModel> LoadDeptList()
@@ -137,7 +139,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                             {
                                 UserId = row["user_id"].ToString(),
                                 UserName = row["user_name"].ToString(),
-                                DeptName = row["dept_name"].ToString(),
+                                DeptName = row["department_name"].ToString(),
                                 Email = row["email"].ToString(),
                                 RoleName = row["role_name"].ToString(),
                                 CreateDate = row["create_date"].ToString(),

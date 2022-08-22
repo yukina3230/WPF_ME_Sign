@@ -19,27 +19,29 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
             if (DetectFieldEmpty())
             {
                 _createUserService = new CreateUserService(UserId, Password, UserName, DeptId, Email, RoleId, _CreateDate);
-                UserList.Clear();
-                UserList = _createUserService.LoadUserList();
-                if (_createUserService.Create()) MessageBox.Show("Success"); else MessageBox.Show("Something Wrong!");
+                if (_createUserService.Create())
+                {
+                    MessageBox.Show("Success");
+                    UserList.Add
+                    (
+                        new UserModel()
+                        {
+                            UserId = UserId,
+                            UserName = UserName,
+                            DeptName = GetDeptNameById(DeptId),
+                            Email = Email,
+                            RoleName = GetRoleNameById(RoleId),
+                            CreateDate = _CreateDate.ToString("dd/MM/yyyy"),
+                            Status = "A"
+                        }
+                    );
+                }
+                else MessageBox.Show("Something Wrong!");
+                
             }
-            else
-            {
-                MessageBox.Show("One or some fields are not filled");
-            }
+            else MessageBox.Show("One or some fields are not filled");
         }
 
-        private bool CreateUserCanExecute()
-        {
-            bool canExecute =
-                !String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(Password)
-                && !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(DeptId)
-                && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(RoleId);
-            if (canExecute)
-            {
-                return true;
-            }
-            return false;
-        }
+        private bool CreateUserCanExecute() => true;
     }
 }
