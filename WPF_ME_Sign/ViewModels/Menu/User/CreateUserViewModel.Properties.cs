@@ -28,17 +28,23 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private ObservableCollection<DeptModel> _DeptList;
         public ObservableCollection<DeptModel> DeptList { get => _DeptList; set { _DeptList = value; OnPropertyChanged(); } }
+
         private string _DeptId;
         public string DeptId { get => _DeptId; set { _DeptId = value; OnPropertyChanged(); } }
+
         private string _DeptName;
         public string DeptName { get => _DeptName; set { _DeptName = value; OnPropertyChanged(); } }
 
         private ObservableCollection<RoleModel> _RoleList;
         public ObservableCollection<RoleModel> RoleList { get => _RoleList; set { _RoleList = value; OnPropertyChanged(); } }
+
         private string _RoleId;
         public string RoleId { get => _RoleId; set { _RoleId = value; OnPropertyChanged(); } }
 
         private ObservableCollection<UserModel> _UserList;
         public ObservableCollection<UserModel> UserList { get => _UserList; set { _UserList = value; OnPropertyChanged(); } }
+
+        private UserModel _UserBinding;
+        public UserModel UserBinding { get => _UserBinding; set { _UserBinding = value; OnPropertyChanged(); } }
     }
 }

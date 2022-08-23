@@ -88,7 +88,7 @@
                                 <TextBlock Text="User ID" FontSize="20" HorizontalAlignment="Center"></TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="1" Height="37" VerticalAlignment="Top">
-                                <TextBox Text="{Binding UserId}"></TextBox>
+                                <TextBox Text="{Binding UserBinding.UserId}"></TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="3">
                                 <TextBox Text="{Binding Password}"></TextBox>
@@ -109,13 +109,13 @@
                                 <ComboBox ItemsSource="{Binding RoleList}" SelectedValue="{Binding RoleId}" DisplayMemberPath="RoleName" SelectedValuePath="RoleId"></ComboBox>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="5">
-                                <TextBox Text="{Binding UserName}"></TextBox>
+                                <TextBox Text="{Binding UserBinding.UserName}"></TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="4">
                                 <TextBlock Text="User Name" FontSize="20" HorizontalAlignment="Center"></TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="1">
-                                <TextBox Text="{Binding Email}"></TextBox>
+                                <TextBox Text="{Binding UserBinding.Email}"></TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="0">
                                 <TextBlock Text="Email" FontSize="20" HorizontalAlignment="Center"></TextBlock>
@@ -155,7 +155,7 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
                             <DataGrid HorizontalAlignment="Stretch"
-                                      ItemsSource="{Binding UserList}"
+                                      ItemsSource="{Binding UserList}" SelectedItem="{Binding UserBinding}"
                                       AutoGenerateColumns="False" CanUserAddRows="False">
                                 <DataGrid.Resources>
                                     <Style TargetType="{x:Type DataGridCell}">

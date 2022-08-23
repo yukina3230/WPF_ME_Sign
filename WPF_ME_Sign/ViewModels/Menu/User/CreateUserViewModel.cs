@@ -27,7 +27,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private bool DetectFieldEmpty()
         {
-            if (!String.IsNullOrEmpty(UserId) && !String.IsNullOrEmpty(Password) && !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(DeptId) && !String.IsNullOrEmpty(RoleId))
+            if (!String.IsNullOrEmpty(UserBinding.UserId) && !String.IsNullOrEmpty(Password) && !String.IsNullOrEmpty(UserBinding.UserName) && !String.IsNullOrEmpty(UserBinding.Email) && !String.IsNullOrEmpty(DeptId) && !String.IsNullOrEmpty(RoleId))
             {
                 return true;
             }
