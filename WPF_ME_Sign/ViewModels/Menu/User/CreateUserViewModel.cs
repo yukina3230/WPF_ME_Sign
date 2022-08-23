@@ -24,8 +24,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
             RoleList = _createUserService.LoadRoleList();
             UserList = _createUserService.LoadUserList();
 
-            CreateUserCommand = new RelayCommand(CreateUserExecute, CreateUserCanExecute);
-            DeleteUserCommand = new RelayCommand(DeleteUserExecute, DeleteUserCanExecute);
+            CreateUserCommand = new RelayCommand(CreateUserExecute, () => true);
+            DeleteUserCommand = new RelayCommand(DeleteUserExecute, () => true);
+            CleanCommand = new RelayCommand(CleanExecute, () => true);
         }
 
         private bool DetectUserIdExist(string userId)
@@ -57,6 +58,13 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         private string GetRoleNameById(string roleId)
         {
             return RoleList.SingleOrDefault(x => x.RoleId == roleId).RoleName;
+        }
+
+        private void BindTextBox()
+        {
+            UserId = UserBinding.UserId;
+            UserName = UserBinding.UserName;
+            Email = UserBinding.Email;
         }
     }
 }

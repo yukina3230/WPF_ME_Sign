@@ -16,6 +16,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         public RelayCommand CreateUserCommand { get; }
         public RelayCommand DeleteUserCommand { get; }
 
+        public RelayCommand CleanCommand { get; }
+
         private void CreateUserExecute()
         {
             if (ValidateHelper.DetectFieldEmpty(UserBinding.UserId, Password, UserBinding.UserName, DeptId, UserBinding.Email, RoleId))
@@ -39,11 +41,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
                     );
                 }
                 else MessageBox.Show("Something Wrong!");
-                
             }
             else MessageBox.Show("One or some fields are not filled");
         }
-        private bool CreateUserCanExecute() => true;
 
         private void DeleteUserExecute()
         {
@@ -59,6 +59,13 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
             }
         }
-        private bool DeleteUserCanExecute() => true;
+
+        private void CleanExecute()
+        {
+            UserId = "";
+            Password = "";
+            UserName = "";
+            Email = "";
+        }
     }
 }
