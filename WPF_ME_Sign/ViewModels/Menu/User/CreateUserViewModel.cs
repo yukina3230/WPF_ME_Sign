@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
             DeptList = _createUserService.LoadDeptList();
             RoleList = _createUserService.LoadRoleList();
             UserList = _createUserService.LoadUserList();
+            UserIdList = new ObservableCollection<string>(UserList.Select(x => x.UserId));
 
             CreateUserCommand = new RelayCommand(CreateUserExecute, () => true);
             DeleteUserCommand = new RelayCommand(DeleteUserExecute, () => true);

@@ -125,27 +125,33 @@
                 </Border>
                 <StackPanel Height="60" Orientation="Vertical" Margin="15">
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Row="0" Grid.Column="0">
-                            <Button Command="{Binding CreateUserCommand}" Content="Add" FontSize="20" HorizontalAlignment="Center"></Button>
-                        </StackPanel>
-                        <StackPanel Grid.Row="0" Grid.Column="1">
-                            <Button Content="Edit" FontSize="20" HorizontalAlignment="Center"></Button>
-                        </StackPanel>
-                        <StackPanel Grid.Row="0" Grid.Column="2">
-                            <Button Command="{Binding DeleteUserCommand}" Content="Del" FontSize="20" HorizontalAlignment="Center"></Button>
-                        </StackPanel>
-                        <StackPanel Grid.Row="0" Grid.Column="3">
-                            <Button Command="{Binding CleanCommand}" Content="Clean" FontSize="20" HorizontalAlignment="Center"></Button>
-                        </StackPanel>
+                        <Grid Grid.Column="0">
+                            <ui:AutoSuggestBox PlaceholderText="Search" ItemsSource="{Binding UserIdList}"></ui:AutoSuggestBox>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Button Command="{Binding CreateUserCommand}" Content="Add" FontSize="20" HorizontalAlignment="Center"></Button>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Button Content="Edit" FontSize="20" HorizontalAlignment="Center"></Button>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <Button Command="{Binding DeleteUserCommand}" Content="Del" FontSize="20" HorizontalAlignment="Center"></Button>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3">
+                                <Button Command="{Binding CleanCommand}" Content="Clean" FontSize="20" HorizontalAlignment="Center"></Button>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="20">
@@ -154,7 +160,7 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
-                            <DataGrid HorizontalAlignment="Stretch"
+                            <DataGrid HorizontalAlignment="Stretch" IsReadOnly="True" SelectionMode="Single"
                                       ItemsSource="{Binding UserList}" SelectedItem="{Binding UserBinding}"
                                       AutoGenerateColumns="False" CanUserAddRows="False">
                                 <DataGrid.Resources>

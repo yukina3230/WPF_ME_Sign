@@ -44,6 +44,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         private ObservableCollection<UserModel> _UserList;
         public ObservableCollection<UserModel> UserList { get => _UserList; set { _UserList = value; OnPropertyChanged(); } }
 
+        private ObservableCollection<string> _UserIdList;
+        public ObservableCollection<string> UserIdList { get => _UserIdList; set { _UserIdList = value; OnPropertyChanged(); } }
+
         private UserModel _UserBinding;
         public UserModel UserBinding { get => _UserBinding; set { _UserBinding = value; OnPropertyChanged(); BindTextBox(); } }
     }
