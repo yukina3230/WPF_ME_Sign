@@ -141,7 +141,7 @@
                             <Button Content="Edit" FontSize="20" HorizontalAlignment="Center"></Button>
                         </StackPanel>
                         <StackPanel Grid.Row="0" Grid.Column="2">
-                            <Button Content="Del" FontSize="20" HorizontalAlignment="Center"></Button>
+                            <Button Command="{Binding DeleteUserCommand}" Content="Del" FontSize="20" HorizontalAlignment="Center"></Button>
                         </StackPanel>
                         <StackPanel Grid.Row="0" Grid.Column="3">
                             <Button Content="Clean" FontSize="20" HorizontalAlignment="Center"></Button>

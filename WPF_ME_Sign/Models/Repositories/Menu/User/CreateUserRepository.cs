@@ -57,6 +57,29 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
             return cmdResult;
         }
 
+        public bool SuspendUser(string userId)
+        {
+            bool cmdResult = false;
+            _cmdStr = FileHelper.GetSQLString("SuspendUser");
+
+            try
+            {
+                _conn.Open();
+                _command = new OracleCommand(_cmdStr, _conn);
+                _command.Parameters.Add("userId", userId);
+                cmdResult = (_command.ExecuteNonQuery() > 0) ? true : false;
+                _conn.Close();
+                return cmdResult;
+            }
+            catch (Exception ex)
+            {
+                _conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+            return cmdResult;
+        }
+
         public ObservableCollection<DeptModel> LoadDeptList()
         {
             ObservableCollection<DeptModel> _deptList = new ObservableCollection<DeptModel>();

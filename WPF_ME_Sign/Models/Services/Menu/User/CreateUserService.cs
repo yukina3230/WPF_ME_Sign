@@ -36,6 +36,8 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
 
         public bool Create() => _createaUserRepository.AddNewUser(_user);
 
+        public bool Delete(string userId) => _createaUserRepository.SuspendUser(userId);
+
         public ObservableCollection<DeptModel> LoadDeptList() => _createaUserRepository.LoadDeptList();
         public ObservableCollection<RoleModel> LoadRoleList() => _createaUserRepository.LoadRoleList();
         public ObservableCollection<UserModel> LoadUserList() => _createaUserRepository.LoadUserList();
