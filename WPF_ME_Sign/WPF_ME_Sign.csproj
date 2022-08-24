@@ -20,4 +20,8 @@
     <PackageReference Include="WPF-UI" Version="2.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Repositories\Menu\Form\" />
+  </ItemGroup>
+
 </Project>

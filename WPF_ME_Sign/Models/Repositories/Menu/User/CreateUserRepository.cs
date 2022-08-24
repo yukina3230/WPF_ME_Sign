@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,7 +66,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
             {
                 _conn.Open();
                 _command = new OracleCommand(_cmdStr, _conn);
-                _command.Parameters.Add("password", Password);
+                _command.Parameters.Add("password", EncodeHelper.EncodeString(Password));
                 _command.Parameters.Add("user_name", UserName);
                 _command.Parameters.Add("email", Email);
                 _command.Parameters.Add("dept_id", DeptId);
@@ -192,10 +193,12 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                                 UserId = row["user_id"].ToString(),
                                 Password = row["password"].ToString(),
                                 UserName = row["user_name"].ToString(),
+                                DeptId = row["dept_id"].ToString(),
                                 DeptName = row["department_name"].ToString(),
                                 Email = row["email"].ToString(),
+                                RoleId = row["role_id"].ToString(),
                                 RoleName = row["role_name"].ToString(),
-                                CreateDate = row["create_date"].ToString(),
+                                CreateDate = Convert.ToDateTime(row["create_date"].ToString()).ToString("dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture),
                                 Status = row["status"].ToString()
                             }
                         );

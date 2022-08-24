@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Xml.Linq;
 using WPF_ME_Sign.Models;
+using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.Models.Services.Menu.User;
 
 namespace WPF_ME_Sign.ViewModels.Menu.User
@@ -83,13 +84,15 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private void UpdateUserList(string userId)
         {
-            var user = UserList.First(x => x.UserId == userId);
+            var user = UserList.SingleOrDefault(x => x.UserId == userId);
             user.Me_UserId = Me_UserId;
             user.UserName = UserName;
             user.Email = Email;
-            user.Password = Password;
+            user.Password = EncodeHelper.EncodeString(Password);
             user.DeptId = DeptId;
+            user.DeptName = DeptList.SingleOrDefault(x => x.DeptId == DeptId).DeptName;
             user.RoleId = RoleId;
+            user.RoleName = RoleList.SingleOrDefault(x => x.RoleId == RoleId).RoleName;
         }
 
         private void FilterCollection()
