@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 {
     public partial class CreateUserViewModel : ObservableObject
     {
+        private string _Me_UserId;
+        public string Me_UserId { get => _Me_UserId; set { _Me_UserId = value; OnPropertyChanged(); } }
+
         private string _UserId;
         public string UserId { get => _UserId; set { _UserId = value; OnPropertyChanged(); } }
 
@@ -43,6 +47,12 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private ObservableCollection<UserModel> _UserList;
         public ObservableCollection<UserModel> UserList { get => _UserList; set { _UserList = value; OnPropertyChanged(); } }
+
+        private ICollectionView _UserFilterList;
+        public ICollectionView UserFilterList { get => _UserFilterList; private set { _UserFilterList = value; OnPropertyChanged(); } }
+
+        private string _FilterString;
+        public string FilterString { get => _FilterString; set { _FilterString = value; OnPropertyChanged(); FilterCollection(); } }
 
         private ObservableCollection<string> _UserIdList;
         public ObservableCollection<string> UserIdList { get => _UserIdList; set { _UserIdList = value; OnPropertyChanged(); } }

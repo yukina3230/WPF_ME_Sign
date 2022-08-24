@@ -86,12 +86,13 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Row="0" Grid.Column="0">
                                 <TextBlock Text="User ID" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                                <Label Content="{Binding Me_UserId}"  FontSize="10" HorizontalAlignment="Left"></Label>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="1" Height="37" VerticalAlignment="Top">
-                                <TextBox Text="{Binding UserId}"></TextBox>
+                                <ui:TextBox Text="{Binding UserId}"></ui:TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="3">
-                                <TextBox Text="{Binding Password}"></TextBox>
+                                <ui:TextBox Text="{Binding Password}"></ui:TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="2">
                                 <TextBlock Text="Password" FontSize="20" HorizontalAlignment="Center"></TextBlock>
@@ -115,7 +116,7 @@
                                 <TextBlock Text="User Name" FontSize="20" HorizontalAlignment="Center"></TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="1">
-                                <TextBox Text="{Binding Email}"></TextBox>
+                                <ui:TextBox Text="{Binding Email}"></ui:TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="0">
                                 <TextBlock Text="Email" FontSize="20" HorizontalAlignment="Center"></TextBlock>
@@ -130,7 +131,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <ui:AutoSuggestBox PlaceholderText="Search" ItemsSource="{Binding UserIdList}"></ui:AutoSuggestBox>
+                            <ui:TextBox PlaceholderText="Search by Id or Name" Text="{Binding FilterString, UpdateSourceTrigger=PropertyChanged}"></ui:TextBox>
                         </Grid>
                         <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
@@ -143,7 +144,7 @@
                                 <Button Command="{Binding CreateUserCommand}" Content="Add" FontSize="20" HorizontalAlignment="Center"></Button>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
-                                <Button Content="Edit" FontSize="20" HorizontalAlignment="Center"></Button>
+                                <Button Command="{Binding EditUserCommand}" Content="Edit" FontSize="20" HorizontalAlignment="Center"></Button>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
                                 <Button Command="{Binding DeleteUserCommand}" Content="Del" FontSize="20" HorizontalAlignment="Center"></Button>
@@ -178,7 +179,9 @@
                                     </Style>
                                 </DataGrid.RowStyle>
                                 <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Me User ID" Binding="{Binding Me_UserId}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="User Id" Binding="{Binding UserId}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Password" Binding="{Binding Password}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="User Name" Binding="{Binding UserName}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Department" Binding="{Binding DeptName}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Email" Binding="{Binding Email}"></DataGridTextColumn>

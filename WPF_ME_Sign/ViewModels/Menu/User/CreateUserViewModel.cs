@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
+using System.Xml.Linq;
 using WPF_ME_Sign.Models;
 using WPF_ME_Sign.Models.Services.Menu.User;
 
@@ -24,9 +26,12 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
             DeptList = _createUserService.LoadDeptList();
             RoleList = _createUserService.LoadRoleList();
             UserList = _createUserService.LoadUserList();
+            UserFilterList = CollectionViewSource.GetDefaultView(UserList);
+            UserFilterList.Filter = new Predicate<object>(Filter);
             UserIdList = new ObservableCollection<string>(UserList.Select(x => x.UserId));
 
             CreateUserCommand = new RelayCommand(CreateUserExecute, () => true);
+            EditUserCommand = new RelayCommand(EditUser, () => true);
             DeleteUserCommand = new RelayCommand(DeleteUserExecute, () => true);
             CleanCommand = new RelayCommand(CleanExecute, () => true);
         }
@@ -64,9 +69,46 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private void BindTextBox()
         {
-            UserId = UserBinding.UserId;
-            UserName = UserBinding.UserName;
-            Email = UserBinding.Email;
+            if (UserBinding != null)
+            {
+                Me_UserId = UserBinding.Me_UserId;
+                UserId = UserBinding.UserId;
+                UserName = UserBinding.UserName;
+                Email = UserBinding.Email;
+                Password = UserBinding.Password;
+                DeptId = UserBinding.DeptId;
+                RoleId = UserBinding.RoleId;
+            }
+        }
+
+        private void UpdateUserList(string userId)
+        {
+            var user = UserList.First(x => x.UserId == userId);
+            user.Me_UserId = Me_UserId;
+            user.UserName = UserName;
+            user.Email = Email;
+            user.Password = Password;
+            user.DeptId = DeptId;
+            user.RoleId = RoleId;
+        }
+
+        private void FilterCollection()
+        {
+            if (UserFilterList != null) UserFilterList.Refresh();
+        }
+
+        public bool Filter(object o)
+        {
+            var user = o as UserModel;
+            if (user != null)
+            {
+                if (!string.IsNullOrEmpty(FilterString))
+                {
+                    return user.UserId.Contains(FilterString) || user.UserName.Contains(FilterString);
+                }
+                return true;
+            }
+            return false;
         }
     }
 }

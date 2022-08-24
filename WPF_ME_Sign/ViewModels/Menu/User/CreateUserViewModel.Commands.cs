@@ -14,8 +14,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
     public partial class CreateUserViewModel
     {
         public RelayCommand CreateUserCommand { get; }
+        public RelayCommand EditUserCommand { get; }
         public RelayCommand DeleteUserCommand { get; }
-
         public RelayCommand CleanCommand { get; }
 
         private void CreateUserExecute()
@@ -43,6 +43,17 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
                 else MessageBox.Show("Something Wrong!");
             }
             else MessageBox.Show("One or some fields are not filled");
+        }
+
+        public void EditUser()
+        {
+            if (_createUserService.Edit(Password, UserName, Email, DeptId, RoleId, _CreateDate, Me_UserId))
+            {
+                MessageBox.Show("Edit Success");
+                UpdateUserList(UserId);
+                UserFilterList.Refresh();
+            }
+            else MessageBox.Show("Something Wrong!");
         }
 
         private void DeleteUserExecute()

@@ -14,12 +14,13 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
 {
     public class CreateUserRepository
     {
-        string _connStr;
-        string _cmdStr;
-        OracleConnection _conn;
-        OracleCommand _command;
-        OracleDataAdapter _dataAdapter;
-        DataTable _dataTable;
+        private string _connStr;
+        private string _cmdStr;
+        private bool result = false;
+        private OracleConnection _conn;
+        private OracleCommand _command;
+        private OracleDataAdapter _dataAdapter;
+        private DataTable _dataTable;
 
         public CreateUserRepository()
         {
@@ -29,7 +30,6 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
 
         public bool AddNewUser(UserModel user)
         {
-            bool cmdResult = false;
             _cmdStr = FileHelper.GetSQLString("CreateUser");
 
             try
@@ -44,9 +44,9 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 _command.Parameters.Add("roleId", user.RoleName);
                 _command.Parameters.Add("create_date", user.CreateDate);
                 _command.Parameters.Add("status", "A");
-                cmdResult = (_command.ExecuteNonQuery() > 0) ? true : false;
+                result = (_command.ExecuteNonQuery() > 0) ? true : false;
                 _conn.Close();
-                return cmdResult;
+                return result;
             }
             catch (Exception ex)
             {
@@ -54,7 +54,35 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 MessageBox.Show(ex.ToString());
             }
 
-            return cmdResult;
+            return false;
+        }
+
+        public bool EditUser(string Password, string UserName, string Email, string DeptId, string RoleId, DateTime CreateDate, string Me_UserId)
+        {
+            _cmdStr = FileHelper.GetSQLString("UpdateUser");
+
+            try
+            {
+                _conn.Open();
+                _command = new OracleCommand(_cmdStr, _conn);
+                _command.Parameters.Add("password", Password);
+                _command.Parameters.Add("user_name", UserName);
+                _command.Parameters.Add("email", Email);
+                _command.Parameters.Add("dept_id", DeptId);
+                _command.Parameters.Add("role_id", RoleId);
+                _command.Parameters.Add("create_date", CreateDate);
+                _command.Parameters.Add("me_user_id", Me_UserId);
+                result = (_command.ExecuteNonQuery() > 0) ? true : false;
+                _conn.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+            return false;
         }
 
         public bool SuspendUser(string userId)
@@ -67,9 +95,9 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 _conn.Open();
                 _command = new OracleCommand(_cmdStr, _conn);
                 _command.Parameters.Add("userId", userId);
-                cmdResult = (_command.ExecuteNonQuery() > 0) ? true : false;
+                result = (_command.ExecuteNonQuery() > 0) ? true : false;
                 _conn.Close();
-                return cmdResult;
+                return result;
             }
             catch (Exception ex)
             {
@@ -77,7 +105,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 MessageBox.Show(ex.ToString());
             }
 
-            return cmdResult;
+            return false;
         }
 
         public ObservableCollection<DeptModel> LoadDeptList()
@@ -160,7 +188,9 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                         (
                             new UserModel()
                             {
+                                Me_UserId = row["me_user_id"].ToString(),
                                 UserId = row["user_id"].ToString(),
+                                Password = row["password"].ToString(),
                                 UserName = row["user_name"].ToString(),
                                 DeptName = row["department_name"].ToString(),
                                 Email = row["email"].ToString(),

@@ -1,11 +1,15 @@
-select user_id,
-    user_name,
-    department_name,
-    email,
-    role_name,
-    to_char(create_date, 'dd/MM/yyyy') as create_date,
-    me_user.status as status
-from me_user
-    left join me_department on me_user.dept_id = me_department.department_id
-    left join me_role on me_user.role_id = me_role.role_id
-where me_user.status = 'A'
+SELECT
+  U.ME_USER_ID,
+  U.USER_ID,
+  U.PASSWORD,
+  U.USER_NAME,
+  D.DEPARTMENT_NAME,
+  U.EMAIL, 
+  R.ROLE_NAME,
+  U.CREATE_DATE,
+  U.STATUS
+FROM ME_USER U
+LEFT JOIN ME_DEPARTMENT D ON U.DEPT_ID = D.DEPARTMENT_ID
+LEFT JOIN ME_ROLE R ON U.ROLE_ID = R.ROLE_ID
+WHERE U.STATUS = 'A'
+ORDER BY U.USER_ID
