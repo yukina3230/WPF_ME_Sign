@@ -8,7 +8,7 @@ namespace WPF_ME_Sign.Models
 {
     public class UserModel
     {
-        public string Me_UserId { get; set; }
+        public string MeUserId { get; set; }
         public string UserId { get; set; }
 
         public string Password { get; set; }

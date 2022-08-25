@@ -15,52 +15,6 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <ui:TitleBar Grid.Row="0" Title="Create New User"></ui:TitleBar>
-        <!--<Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="7*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="40 0">
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"></ColumnDefinition>
-                    <ColumnDefinition Width="7*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                    </Style>
-                </Grid.Resources>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="User Id:"></TextBlock>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Password:"></TextBlock>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="User Name:"></TextBlock>
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Email:"></TextBlock>
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="Department:"></TextBlock>
-                <TextBlock Grid.Row="5" Grid.Column="0" Text="Role:"></TextBlock>
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding UserId}"></TextBox>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Password}"></TextBox>
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding UserName}"></TextBox>
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Email}"></TextBox>
-                <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding DeptList}" SelectedItem="{Binding Dept}" Width="150" HorizontalAlignment="Right"></ComboBox>
-                <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding RoleId}"></TextBox>
-            </Grid>
-            <Grid Grid.Row="1" Margin="40 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <ui:Button Grid.Column="0" Width="140" Height="40" Margin="0 20 0 0"
-                           HorizontalAlignment="Right" VerticalAlignment="Top"
-                           Content="CREATE" Command="{Binding CreateUserCommand}" IsDefault="True">
-                </ui:Button>
-            </Grid>
-        </Grid>-->
         <Grid>
             <StackPanel>
                 <StackPanel>
@@ -179,7 +133,7 @@
                                     </Style>
                                 </DataGrid.RowStyle>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Me User ID" Binding="{Binding Me_UserId}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Me User ID" Binding="{Binding MeUserId}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="User Id" Binding="{Binding UserId}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Password" Binding="{Binding Password}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="User Name" Binding="{Binding UserName}"></DataGridTextColumn>

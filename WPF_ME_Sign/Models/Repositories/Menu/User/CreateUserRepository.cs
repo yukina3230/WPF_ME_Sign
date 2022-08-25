@@ -189,7 +189,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                         (
                             new UserModel()
                             {
-                                Me_UserId = row["me_user_id"].ToString(),
+                                MeUserId = row["me_user_id"].ToString(),
                                 UserId = row["user_id"].ToString(),
                                 Password = row["password"].ToString(),
                                 UserName = row["user_name"].ToString(),

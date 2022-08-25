@@ -13,8 +13,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 {
     public partial class CreateUserViewModel : ObservableObject
     {
-        private string _Me_UserId;
-        public string Me_UserId { get => _Me_UserId; set { _Me_UserId = value; OnPropertyChanged(); } }
+        private string _MeUserId;
+        public string MeUserId { get => _MeUserId; set { _MeUserId = value; OnPropertyChanged(); } }
 
         private string _UserId;
         public string UserId { get => _UserId; set { _UserId = value; OnPropertyChanged(); } }
