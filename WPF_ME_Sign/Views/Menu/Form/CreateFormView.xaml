@@ -76,9 +76,9 @@
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <st:StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Mã giày/Model:"></TextBlock>
@@ -108,9 +108,9 @@
                 <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="5">
                     <Grid Margin="20">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="8*"></ColumnDefinition>
+                            <ColumnDefinition Width="4.5*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="8*"></ColumnDefinition>
+                            <ColumnDefinition Width="4.5*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <st:StackPanel Grid.Column="0" Orientation="Horizontal" MarginBetweenChildren="20">
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
