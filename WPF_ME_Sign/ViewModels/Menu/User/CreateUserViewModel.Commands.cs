@@ -47,7 +47,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         public void EditUser()
         {
-            if (_createUserService.Edit(Password, UserName, Email, DeptId, RoleId, _CreateDate, Me_UserId))
+            if (_createUserService.Edit(Password, UserName, Email, DeptId, RoleId, _CreateDate, MeUserId))
             {
                 MessageBox.Show("Edit Success");
                 UpdateUserList(UserId);

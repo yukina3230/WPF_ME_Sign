@@ -72,7 +72,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         {
             if (UserBinding != null)
             {
-                Me_UserId = UserBinding.Me_UserId;
+                MeUserId = UserBinding.MeUserId;
                 UserId = UserBinding.UserId;
                 UserName = UserBinding.UserName;
                 Email = UserBinding.Email;
@@ -85,7 +85,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         private void UpdateUserList(string userId)
         {
             var user = UserList.SingleOrDefault(x => x.UserId == userId);
-            user.Me_UserId = Me_UserId;
+            user.MeUserId = MeUserId;
             user.UserName = UserName;
             user.Email = Email;
             user.Password = EncodeHelper.EncodeString(Password);
