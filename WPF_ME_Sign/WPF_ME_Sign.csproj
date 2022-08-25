@@ -17,6 +17,7 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.70" />
+    <PackageReference Include="SpicyTaco.AutoGrid" Version="1.2.29" />
     <PackageReference Include="WPF-UI" Version="2.0.2" />
   </ItemGroup>
 
