@@ -34,14 +34,16 @@ namespace WPF_ME_Sign.Models
 
         public string ImproveProblem { get; set; }
 
-        public string PictureDesctibePath { get; set; }
+        public string DesctibePicturePath { get; set; }
 
-        public string PictureImprovePath { get; set; }
+        public string ImprovePicturePath { get; set; }
 
         public string CreateUserId { get; set; }
 
         public string CreateDate { get; set; }
 
         public string KPIId { get; set; }
+
+        public string Status { get; set; }
     }
 }

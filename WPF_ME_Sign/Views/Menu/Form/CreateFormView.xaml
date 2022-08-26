@@ -44,7 +44,7 @@
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Khu vực:"></TextBlock>
-                                <ui:TextBox Text="{Binding DeptName}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <ui:TextBox Text="{Binding DeptId}" st:StackPanel.Fill="Fill"></ui:TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Text="Chuyền:"></TextBlock>
@@ -63,15 +63,15 @@
                             </Grid.ColumnDefinitions>
                             <st:StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Người đề xuất dự án:"></TextBlock>
-                                <ui:TextBox Text="{Binding FormUserId}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <ui:TextBox Text="{Binding FormUserName}" st:StackPanel.Fill="Fill"></ui:TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Số Thẻ:"></TextBlock>
-                                <ui:TextBox Text="{Binding StaffId}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <ui:TextBox Text="{Binding FormUserId}" st:StackPanel.Fill="Fill"></ui:TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Text="Điểm:"></TextBlock>
-                                <ui:TextBox Text="{Binding StaffMePoint}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <ui:TextBox Text="{Binding Score}" st:StackPanel.Fill="Fill"></ui:TextBox>
                             </st:StackPanel>
                         </Grid>
                         <Grid>
@@ -90,7 +90,7 @@
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Text="Lưu trình:"></TextBlock>
-                                <ui:TextBox Text="{Binding Point}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <ui:TextBox Text="{Binding Processing}" st:StackPanel.Fill="Fill"></ui:TextBox>
                             </st:StackPanel>
                         </Grid>
                     </st:StackPanel>
@@ -116,7 +116,7 @@
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
                                 <TextBlock Text="Tình trạng hiện tại" HorizontalAlignment="Center"></TextBlock>
                                 <Separator></Separator>
-                                <Image Source="{Binding PictureDescribeProblem}" Width="200" Height="200"></Image>
+                                <Image Source="{Binding DesctibePicturePath}" Width="200" Height="200"></Image>
                             </st:StackPanel>
                             <ui:Button Command="{Binding AddDescribePictureCommand}" VerticalAlignment="Center"
                                        Padding="10" Icon="Add24" FontSize="15" Appearance="Primary">
@@ -127,7 +127,7 @@
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
                                 <TextBlock Text="Ý kiến đề xuất" HorizontalAlignment="Center"></TextBlock>
                                 <Separator></Separator>
-                                <Image Source="{Binding PictureImproveProblem}" Width="200" Height="200"></Image>
+                                <Image Source="{Binding ImprovePicturePath}" Width="200" Height="200"></Image>
                             </st:StackPanel>
                             <ui:Button Command="{Binding AddImprovePictureCommand}" VerticalAlignment="Center"
                                        Padding="10" Icon="Add24" FontSize="15" Appearance="Primary">
@@ -256,7 +256,7 @@
                 </Grid>
                 <Separator></Separator>
                 <Grid>
-                    <ui:Button Content="SAVE" Command="{Binding SaveCommand}" Padding="35 15" FontSize="15"
+                    <ui:Button Content="SAVE" Command="{Binding CreateFormCommand}" Padding="35 15" FontSize="15"
                                Icon="Save24" HorizontalAlignment="Right" Margin="0 0 0 20" Appearance="Primary">
                     </ui:Button>
                 </Grid>

@@ -11,17 +11,17 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
 {
     public class CreateUserService
     {
-        private CreateUserRepository _createaUserRepository;
+        private CreateUserRepository _createUserRepository;
         private UserModel _user;
 
         public CreateUserService()
         {
-            _createaUserRepository = new CreateUserRepository();
+            _createUserRepository = new CreateUserRepository();
         }
 
         public CreateUserService(string userId, string password, string userName, string deptId, string email, string roleId, DateTime _createDate)
         {
-            _createaUserRepository = new CreateUserRepository();
+            _createUserRepository = new CreateUserRepository();
             _user = new UserModel()
             {
                 UserId = userId,
@@ -34,15 +34,15 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
             };
         }
 
-        public bool Create() => _createaUserRepository.AddNewUser(_user);
+        public bool Create() => _createUserRepository.AddNewUser(_user);
 
-        public bool Delete(string userId) => _createaUserRepository.SuspendUser(userId);
+        public bool Delete(string userId) => _createUserRepository.SuspendUser(userId);
 
-        public bool Edit(string Password, string UserName, string Email, string DeptId, string RoleId, DateTime CreateDate, string Me_UserId) => _createaUserRepository.EditUser(Password, UserName, Email, DeptId, RoleId, CreateDate, Me_UserId);
+        public bool Edit(string Password, string UserName, string Email, string DeptId, string RoleId, DateTime CreateDate, string Me_UserId) => _createUserRepository.EditUser(Password, UserName, Email, DeptId, RoleId, CreateDate, Me_UserId);
 
-        public ObservableCollection<DeptModel> LoadDeptList() => _createaUserRepository.LoadDeptList();
-        public ObservableCollection<RoleModel> LoadRoleList() => _createaUserRepository.LoadRoleList();
-        public ObservableCollection<UserModel> LoadUserList() => _createaUserRepository.LoadUserList();
+        public ObservableCollection<DeptModel> LoadDeptList() => _createUserRepository.LoadDeptList();
+        public ObservableCollection<RoleModel> LoadRoleList() => _createUserRepository.LoadRoleList();
+        public ObservableCollection<UserModel> LoadUserList() => _createUserRepository.LoadUserList();
 
         
     }

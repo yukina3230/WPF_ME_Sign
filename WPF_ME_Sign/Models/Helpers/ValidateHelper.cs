@@ -12,12 +12,12 @@ namespace WPF_ME_Sign.Models.Helpers
         {
             foreach (var item in values)
             {
-                if (!String.IsNullOrEmpty(item))
+                if (String.IsNullOrEmpty(item))
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
     }
 }

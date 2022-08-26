@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_ME_Sign.ViewModels.Menu.Form.CreateForm;
 
 namespace WPF_ME_Sign.Views.Menu.Form
 {
@@ -19,9 +20,12 @@ namespace WPF_ME_Sign.Views.Menu.Form
     /// </summary>
     public partial class CreateFormView : Window
     {
+        CreateFormViewModel viewModel;
         public CreateFormView()
         {
             InitializeComponent();
+            viewModel = new CreateFormViewModel();
+            DataContext = viewModel;
         }
     }
 }
