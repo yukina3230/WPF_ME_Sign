@@ -21,4 +21,8 @@
     <PackageReference Include="WPF-UI" Version="2.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Menu\Form\QuerySign\" />
+  </ItemGroup>
+
 </Project>

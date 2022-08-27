@@ -20,7 +20,7 @@ namespace WPF_ME_Sign.Models
 
         public string FormUserName { get; set; }
 
-        public string  ProjectTitle { get; set; }
+        public string ProjectTitle { get; set; }
 
         public string Score { get; set; }
 
