@@ -8,6 +8,7 @@
         Title="CreateFormView" Height="600" Width="1200" MinHeight="600" MinWidth="1000"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:st="http://schemas.spicytaco.io/"
+        xmlns:cc="clr-namespace:WPF_ME_Sign.Components"
         Style="{StaticResource UiWindow}"
         WindowStartupLocation="CenterScreen">
     <Grid>
@@ -40,11 +41,11 @@
                             </Grid.ColumnDefinitions>
                             <st:StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Số hiệu:"></TextBlock>
-                                <ui:TextBox Text="{Binding SignId}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <cc:NumberTextbox Text="{Binding SignId}" st:StackPanel.Fill="Fill"></cc:NumberTextbox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Khu vực:"></TextBlock>
-                                <ui:TextBox Text="{Binding DeptId}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <ComboBox ItemsSource="{Binding DeptList}" SelectedValue="{Binding DeptId}" DisplayMemberPath="DeptName" SelectedValuePath="DeptId" st:StackPanel.Fill="Fill"></ComboBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Text="Chuyền:"></TextBlock>

@@ -2,9 +2,11 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPF_ME_Sign.Models;
 
 namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
 {
@@ -12,6 +14,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
     {
         private string _SignId;
         public string SignId { get => _SignId; set { _SignId = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<DeptModel> _DeptList;
+        public ObservableCollection<DeptModel> DeptList { get => _DeptList; set { _DeptList = value; OnPropertyChanged(); } }
 
         private string _DeptId;
         public string DeptId { get => _DeptId; set { _DeptId = value; OnPropertyChanged(); } }

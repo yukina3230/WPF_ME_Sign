@@ -29,9 +29,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
         {
             try
             {
-                InsertKPI(kpi);
-                InsertForm(form);
-                InsertSign(sign);
+                if (InsertKPI(kpi)) if (InsertForm(form)) if (InsertSign(sign))
 
                 return true;
             }

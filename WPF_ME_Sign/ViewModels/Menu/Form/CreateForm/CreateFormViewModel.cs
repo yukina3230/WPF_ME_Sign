@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             AddDescribePictureCommand = new RelayCommand(AddDescribePath);
             AddImprovePictureCommand = new RelayCommand(AddImprovePath);
             CreateFormCommand = new RelayCommand(CreateFormExecute);
+            Copy();
         }
 
         private FormModel GetFormValues()
@@ -121,6 +123,20 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
         private bool DetectFieldEmpty()
         {
             return ValidateHelper.DetectFieldEmpty(SignId, DeptId, Line, ProjectTitle, FormUserId, Score, Model, Article, Processing, DescribeProblem, ImproveProblem, DesctibePicturePath, ImprovePicturePath);
+        }
+
+        private void Copy()
+        {
+            string sourceFile = @"D:\Set.ini";
+            string destinationFile = @"\\10.1.1.46\New folder (2)\New folder\Set.ini";
+            try
+            {
+                File.Copy(sourceFile, destinationFile, true);
+            }
+            catch (IOException iox)
+            {
+                Console.WriteLine(iox.Message);
+            }
         }
     }
 }
