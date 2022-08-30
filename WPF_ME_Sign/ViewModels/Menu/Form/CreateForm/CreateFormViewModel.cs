@@ -16,16 +16,21 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
     {
         public CreateFormViewModel()
         {
+            ClearTempFolder();
+
             CreateDate = DateTime.Now.ToString("dd/MM/yyyy");
             _CreateDate = DateTime.Now.ToString("ddMMyyyy");
             _fileDialog = new OpenFileDialog();
             _fileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
             _fileDialog.FilterIndex = 1;
             _fileDialog.Multiselect = false;
+            _createFormService = new CreateFormService();
             AddDescribePictureCommand = new RelayCommand(AddDescribePath);
             AddImprovePictureCommand = new RelayCommand(AddImprovePath);
             CreateFormCommand = new RelayCommand(CreateFormExecute);
-            Copy();
+            ExportCommand = new RelayCommand(ExportExecute);
+            DeptList = _createFormService.LoadDeptList();
+
         }
 
         private FormModel GetFormValues()
@@ -34,7 +39,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             {
                 SignId = SignId,
                 DeptId = DeptId,
+                DeptName = DeptList.SingleOrDefault(x => x.DeptId == DeptId).DeptName,
                 FormUserId = FormUserId,
+                FormUserName = FormUserName,
                 Line = Line,
                 ProjectTitle = ProjectTitle,
                 Score = Score,
@@ -125,17 +132,44 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             return ValidateHelper.DetectFieldEmpty(SignId, DeptId, Line, ProjectTitle, FormUserId, Score, Model, Article, Processing, DescribeProblem, ImproveProblem, DesctibePicturePath, ImprovePicturePath);
         }
 
-        private void Copy()
+        //private void Copy()
+        //{
+        //    string sourceFile = @"D:\Set.ini";
+        //    string destinationFile = @"\\10.1.1.46\New folder (2)\New folder\Set.ini";
+        //    try
+        //    {
+        //        File.Copy(sourceFile, destinationFile, true);
+        //    }
+        //    catch (IOException iox)
+        //    {
+        //        Console.WriteLine(iox.Message);
+        //    }
+        //}
+
+        private string CopyTempImage(string sourceFile)
         {
-            string sourceFile = @"D:\Set.ini";
-            string destinationFile = @"\\10.1.1.46\New folder (2)\New folder\Set.ini";
+            string destinationFile = FileHelper.GetTempPath(sourceFile);
+
             try
             {
                 File.Copy(sourceFile, destinationFile, true);
+                return destinationFile;
             }
             catch (IOException iox)
             {
                 Console.WriteLine(iox.Message);
+            }
+
+            return "";
+        }
+
+        private void ClearTempFolder()
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(FileHelper.GetTempPath(""));
+
+            foreach (FileInfo file in dInfo.EnumerateFiles())
+            {
+                file.Delete();
             }
         }
     }

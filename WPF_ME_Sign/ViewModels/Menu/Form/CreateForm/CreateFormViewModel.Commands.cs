@@ -17,6 +17,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
         private CreateFormService _createFormService;
 
         public RelayCommand CreateFormCommand { get; }
+
+        public RelayCommand ExportCommand { get; }
+
         public RelayCommand AddDescribePictureCommand { get; }
         public RelayCommand AddImprovePictureCommand { get; }
 
@@ -34,11 +37,16 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             else MessageBox.Show("One or some fields are not filled");
         }
 
+        private void ExportExecute()
+        {
+            _createFormService.Report(GetFormValues(), GetKPIValues());
+        }
+
         private void AddDescribePath()
         {
             if ((bool)_fileDialog.ShowDialog())
             {
-                DesctibePicturePath = _fileDialog.FileName;
+                DesctibePicturePath = CopyTempImage(_fileDialog.FileName);
             }
         }
 

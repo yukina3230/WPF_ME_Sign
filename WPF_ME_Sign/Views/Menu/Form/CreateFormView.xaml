@@ -117,7 +117,7 @@
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
                                 <TextBlock Text="Tình trạng hiện tại" HorizontalAlignment="Center"></TextBlock>
                                 <Separator></Separator>
-                                <Image Source="{Binding DesctibePicturePath}" Width="200" Height="200"></Image>
+                                <Image Source="{Binding DesctibePicturePath}" Width="200" MinHeight="200"></Image>
                             </st:StackPanel>
                             <ui:Button Command="{Binding AddDescribePictureCommand}" VerticalAlignment="Center"
                                        Padding="10" Icon="Add24" FontSize="15" Appearance="Primary">
@@ -128,7 +128,7 @@
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
                                 <TextBlock Text="Ý kiến đề xuất" HorizontalAlignment="Center"></TextBlock>
                                 <Separator></Separator>
-                                <Image Source="{Binding ImprovePicturePath}" Width="200" Height="200"></Image>
+                                <Image Source="{Binding ImprovePicturePath}" Width="200" MinHeight="200"></Image>
                             </st:StackPanel>
                             <ui:Button Command="{Binding AddImprovePictureCommand}" VerticalAlignment="Center"
                                        Padding="10" Icon="Add24" FontSize="15" Appearance="Primary">
@@ -170,7 +170,7 @@
                                         <Run Text="Người"></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <TextBox Text="{Binding Manpower_A}"></TextBox>
+                                    <cc:NumberTextbox Text="{Binding Manpower_A}"></cc:NumberTextbox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="1" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -179,7 +179,7 @@
                                         <Run></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <TextBox Text="{Binding CT_A}"></TextBox>
+                                    <cc:NumberTextbox Text="{Binding CT_A}"></cc:NumberTextbox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="2" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -188,7 +188,7 @@
                                         <Run></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <TextBox Text="{Binding EFF_A}"></TextBox>
+                                    <cc:NumberTextbox Text="{Binding EFF_A}"></cc:NumberTextbox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="3" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -197,7 +197,7 @@
                                         <Run Text="Nguyên liệu"></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <TextBox Text="{Binding Material_A}"></TextBox>
+                                    <cc:NumberTextbox Text="{Binding Material_A}"></cc:NumberTextbox>
                                 </st:StackPanel>
                             </st:AutoGrid>
                         </st:StackPanel>
@@ -224,7 +224,7 @@
                                         <Run Text="Người"></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <TextBox Text="{Binding Manpower_B}"></TextBox>
+                                    <cc:NumberTextbox Text="{Binding Manpower_B}"></cc:NumberTextbox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="1" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -232,7 +232,7 @@
                                         <LineBreak></LineBreak>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <TextBox Text="{Binding CT_B}"></TextBox>
+                                    <cc:NumberTextbox Text="{Binding CT_B}"></cc:NumberTextbox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="2" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -240,7 +240,7 @@
                                         <LineBreak></LineBreak>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <TextBox Text="{Binding EFF_B}"></TextBox>
+                                    <cc:NumberTextbox Text="{Binding EFF_B}"></cc:NumberTextbox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="3" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -249,7 +249,7 @@
                                         <Run Text="Nguyên liệu"></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <TextBox Text="{Binding Material_B}"></TextBox>
+                                    <cc:NumberTextbox Text="{Binding Material_B}"></cc:NumberTextbox>
                                 </st:StackPanel>
                             </st:AutoGrid>
                         </st:StackPanel>
@@ -257,8 +257,15 @@
                 </Grid>
                 <Separator></Separator>
                 <Grid>
-                    <ui:Button Content="SAVE" Command="{Binding CreateFormCommand}" Padding="35 15" FontSize="15"
-                               Icon="Save24" HorizontalAlignment="Right" Margin="0 0 0 20" Appearance="Primary">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ui:Button Grid.Column="0" Content="SAVE" Command="{Binding CreateFormCommand}" Padding="35 15" FontSize="15"
+                               Icon="Save24" HorizontalAlignment="Right" Margin="0 0 20 20" Appearance="Primary">
+                    </ui:Button>
+                    <ui:Button Grid.Column="1" Content="Export" Command="{Binding ExportCommand}" Padding="35 15" FontSize="15"
+                               Icon="Save24" HorizontalAlignment="Center" Margin="0 0 0 20" Appearance="Secondary">
                     </ui:Button>
                 </Grid>
             </st:StackPanel>

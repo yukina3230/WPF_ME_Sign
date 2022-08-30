@@ -9,7 +9,7 @@ namespace WPF_ME_Sign.Models.Helpers
 {
     public static class FileHelper
     {
-        static string ProjectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+        public static string ProjectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
 
         public static string ImageServerPath = @"\\10.1.0.112\ME_Images\"; 
 
@@ -17,6 +17,16 @@ namespace WPF_ME_Sign.Models.Helpers
         {
             string filePath = Path.Combine(ProjectPath, "Models", "Repositories", "SQL", String.Concat(sqlFileName, ".sql"));
             return File.ReadAllText(filePath);
+        }
+
+        public static string GetTemplatePath(string templateFileName)
+        {
+            return Path.Combine(ProjectPath, "Resources", "Templates", String.Concat(templateFileName, ".xlsx"));
+        }
+
+        public static string GetTempPath(string tempFilePath)
+        {
+            return Path.Combine(ProjectPath, "Resources", "Temp", Path.GetFileName(tempFilePath));
         }
     }
 }

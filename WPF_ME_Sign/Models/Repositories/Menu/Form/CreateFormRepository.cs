@@ -1,6 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
         private bool result = false;
         private OracleConnection _conn;
         private OracleCommand _command;
+        private OracleDataAdapter _dataAdapter;
+        private DataTable _dataTable;
 
         public CreateFormRepository()
         {
@@ -29,7 +32,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
         {
             try
             {
-                if (InsertKPI(kpi)) if (InsertForm(form)) if (InsertSign(sign))
+                if (InsertKPI(kpi)) if (CreateForm(form)) if (InsertSign(sign))
 
                 return true;
             }
@@ -40,7 +43,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
             return false;
         }
 
-        private bool InsertForm(FormModel form)
+        private bool CreateForm(FormModel form)
         {
             _cmdStr = FileHelper.GetSQLString("CreateSign");
 
@@ -51,6 +54,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
                 _command.Parameters.Add("sign_id", form.SignId);
                 _command.Parameters.Add("department_id", form.DeptId);
                 _command.Parameters.Add("form_user_id", form.FormUserId);
+                _command.Parameters.Add("form_user_name", form.FormUserName);
                 _command.Parameters.Add("line", form.Line);
                 _command.Parameters.Add("project_title", form.ProjectTitle);
                 _command.Parameters.Add("score", form.Score);
@@ -126,6 +130,36 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
             }
 
             return false;
+        }
+
+        public ObservableCollection<DeptModel> LoadDeptList()
+        {
+            ObservableCollection<DeptModel> _deptList = new ObservableCollection<DeptModel>();
+            _cmdStr = FileHelper.GetSQLString("GetDeptList");
+
+            try
+            {
+                _conn.Open();
+                _command = new OracleCommand(_cmdStr, _conn);
+                _dataAdapter = new OracleDataAdapter(_command);
+                _dataTable = new DataTable();
+
+                if (_dataAdapter.Fill(_dataTable) > 0)
+                {
+                    foreach (DataRow row in _dataTable.Rows)
+                    {
+                        _deptList.Add(new DeptModel() { DeptId = row["department_id"].ToString(), DeptName = row["department_name"].ToString() });
+                    }
+                }
+                _conn.Close();
+            }
+            catch (Exception ex)
+            {
+                _conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+            return _deptList;
         }
     }
 }
