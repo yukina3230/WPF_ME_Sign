@@ -30,7 +30,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             CreateFormCommand = new RelayCommand(CreateFormExecute);
             ExportCommand = new RelayCommand(ExportExecute);
             DeptList = _createFormService.LoadDeptList();
-
         }
 
         private FormModel GetFormValues()
