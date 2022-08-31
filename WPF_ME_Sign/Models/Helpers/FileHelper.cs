@@ -28,5 +28,19 @@ namespace WPF_ME_Sign.Models.Helpers
         {
             return Path.Combine(ProjectPath, "Resources", "Temp", Path.GetFileName(tempFilePath));
         }
+
+        public static string GetFileSize(string filePath)
+        {
+            string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+            double size = new FileInfo(filePath).Length;
+            int index = 0;
+            while (size >= 1024 && index < sizes.Length - 1)
+            {
+                index++;
+                size = size / 1024;
+            }
+
+            return String.Format("{0:0.##} {1}", size, sizes[index]);
+        }
     }
 }

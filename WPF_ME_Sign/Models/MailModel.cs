@@ -13,6 +13,6 @@ namespace WPF_ME_Sign.Models
         public ObservableCollection<string> ToAddress { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public ObservableCollection<string> FileList { get; set; }
+        public ObservableCollection<FileModel> FileList { get; set; }
     }
 }

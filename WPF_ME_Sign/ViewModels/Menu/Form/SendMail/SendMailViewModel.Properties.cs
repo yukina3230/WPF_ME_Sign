@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPF_ME_Sign.Models;
 
 namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
 {
@@ -22,7 +23,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
         private string _Content;
         public string Content { get => _Content; set { _Content = value; OnPropertyChanged(); } }
 
-        private ObservableCollection<string> _FileList;
-        public ObservableCollection<string> FileList { get => _FileList; set { _FileList = value; OnPropertyChanged(); } }
+        private ObservableCollection<FileModel> _FileList;
+        public ObservableCollection<FileModel> FileList { get => _FileList; set { _FileList = value; OnPropertyChanged(); } }
     }
 }

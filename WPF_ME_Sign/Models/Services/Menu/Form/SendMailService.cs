@@ -34,7 +34,7 @@ namespace WPF_ME_Sign.Models.Services.Menu.Form
             return SendEmailViaOutlook(mail.FromAddress, mail.ToAddress, mail.Title, mail.Content, mail.FileList);
         }
 
-        public static bool SendEmailViaOutlook(string fromAddress, ObservableCollection<string> toAddress, string title, string content, ObservableCollection<string> fileList)
+        public static bool SendEmailViaOutlook(string fromAddress, ObservableCollection<string> toAddress, string title, string content, ObservableCollection<FileModel> fileList)
         {
             bool bRes = false;
 
@@ -61,9 +61,9 @@ namespace WPF_ME_Sign.Models.Services.Menu.Form
                 if (fileList != null)
                 {
                     //Add attachments
-                    foreach (string strPath in fileList)
+                    foreach (var strPath in fileList)
                     {
-                        if (File.Exists(strPath))
+                        if (File.Exists(strPath.FileName))
                         {
                             newMail.Attachments.Add(strPath);
                         }

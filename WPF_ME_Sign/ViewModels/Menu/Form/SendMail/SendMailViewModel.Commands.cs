@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPF_ME_Sign.Models;
+using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.Models.Services.Menu.Form;
 using Path = System.IO.Path;
 
@@ -29,9 +31,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
             {
                 foreach (string str in _fileDialog.FileNames)
                 {
-                    if (!FileList.Contains(str))
+                    if (FileList.FirstOrDefault(x => x.FileName == str) == null)
                     {
-                        FileList.Add(str);
+                        FileList.Add(new FileModel { FileName = str, FileSize = FileHelper.GetFileSize(str) });
                     }
                 }
             }
@@ -44,7 +46,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
 
         private void RemoveFileExecute(object o)
         {
-            FileList.Remove(o.ToString());
+            FileList.Remove((FileModel)o);
         }
 
         private void SendMailExecute()

@@ -44,11 +44,17 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="100"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="100"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
                                             <Grid.InputBindings>
                                                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.OpenFileCommand, RelativeSource={RelativeSource AncestorType=ListView} }" CommandParameter="{Binding}"></MouseBinding>
                                             </Grid.InputBindings>
-                                            <TextBlock Grid.Column="0" Text="{Binding}" VerticalAlignment="Center"></TextBlock>
-                                            <ui:Button Grid.Column="1" Icon="Dismiss20" HorizontalAlignment="Right"
+                                            <TextBlock Grid.Column="0" Text="{Binding FileName}" VerticalAlignment="Center" Margin="0 0 20 0"></TextBlock>
+                                            <TextBlock Grid.Column="1" Text="{Binding FileSize}" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
+                                            <ui:Button Grid.Column="2" Icon="Dismiss20" HorizontalAlignment="Right" Margin="0 0 10 0"
                                                        Command="{Binding DataContext.RemoveFileCommand, RelativeSource={RelativeSource AncestorType=ListView} }" CommandParameter="{Binding}">
                                             </ui:Button>
                                         </Grid>

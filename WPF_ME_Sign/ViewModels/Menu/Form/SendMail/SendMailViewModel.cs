@@ -18,7 +18,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
             _fileDialog = new OpenFileDialog();
             _fileDialog.Multiselect = true;
             _sendMailService = new SendMailService();
-            FileList = new ObservableCollection<string>();
+            FileList = new ObservableCollection<FileModel>();
             //ToAddress = _sendMailService.GetToAddress();
             ToAddress = new ObservableCollection<string>();
             ToAddress.Add("SPG-IT011@spg-sportsgear.com");
