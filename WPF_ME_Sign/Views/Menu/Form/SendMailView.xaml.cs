@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 using WPF_ME_Sign.ViewModels.Menu.Form.SendMail;
 
 namespace WPF_ME_Sign.Views.Menu.Form
@@ -18,7 +19,7 @@ namespace WPF_ME_Sign.Views.Menu.Form
     /// <summary>
     /// Interaction logic for SendMailView.xaml
     /// </summary>
-    public partial class SendMailView : Window
+    public partial class SendMailView : UiWindow
     {
         SendMailViewModel viewModel;
         public SendMailView()

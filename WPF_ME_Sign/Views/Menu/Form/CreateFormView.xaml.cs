@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 using WPF_ME_Sign.ViewModels.Menu.Form.CreateForm;
 
 namespace WPF_ME_Sign.Views.Menu.Form
@@ -18,7 +19,7 @@ namespace WPF_ME_Sign.Views.Menu.Form
     /// <summary>
     /// Interaction logic for CreateFormView.xaml
     /// </summary>
-    public partial class CreateFormView : Window
+    public partial class CreateFormView : UiWindow
     {
         CreateFormViewModel viewModel;
         public CreateFormView()

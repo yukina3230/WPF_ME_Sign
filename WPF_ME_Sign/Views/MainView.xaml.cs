@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 using WPF_ME_Sign.ViewModels;
 
 namespace WPF_ME_Sign.Views
@@ -18,7 +19,7 @@ namespace WPF_ME_Sign.Views
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class MainView : UiWindow
     {
         private MainViewModel _viewModel;
         public MainView()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -47,6 +48,16 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
                 }
             }
             MessageBox.Show("User Id does not exist");
+            return false;
+        }
+
+        private bool DetectEmailValid(string email)
+        {
+            if (Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
+            {
+                return true;
+            }
+            MessageBox.Show("Email is invalid");
             return false;
         }
 

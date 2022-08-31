@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf.Ui.Controls;
 
 namespace WPF_ME_Sign.Views.Menu.Form
 {
     /// <summary>
     /// Interaction logic for QuerySignView.xaml
     /// </summary>
-    public partial class QuerySignView : Window
+    public partial class QuerySignView : UiWindow
     {
         public QuerySignView()
         {

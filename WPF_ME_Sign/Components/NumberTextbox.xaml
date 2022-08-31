@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_ME_Sign.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
     <Grid>
-        <TextBox x:Name="numberTextbox" PreviewTextInput="NumberValidationTextBox" PreviewKeyDown="numberTextbox_PreviewKeyDown" TextChanged="numberTextbox_TextChanged"></TextBox>
+        <ui:TextBox x:Name="numberTextbox" PreviewTextInput="NumberValidationTextBox" PreviewKeyDown="numberTextbox_PreviewKeyDown" TextChanged="numberTextbox_TextChanged"></ui:TextBox>
     </Grid>
 </UserControl>

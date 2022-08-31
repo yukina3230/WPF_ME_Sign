@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WPF_ME_Sign.Models.Helpers
 {
@@ -14,6 +15,7 @@ namespace WPF_ME_Sign.Models.Helpers
             {
                 if (String.IsNullOrEmpty(item))
                 {
+                    MessageBox.Show("One or some fields are not filled");
                     return false;
                 }
             }
