@@ -37,7 +37,7 @@ namespace WPF_ME_Sign.Models.Services.Menu.Form
 
         public static bool SendEmailViaOutlook(string fromAddress, ObservableCollection<string> toAddress, string title, string content, ObservableCollection<FileModel> fileList)
         {
-            bool bRes = false;
+            bool result = false;
 
             try
             {
@@ -101,7 +101,7 @@ namespace WPF_ME_Sign.Models.Services.Menu.Form
                     ((Outlook._MailItem)newMail).Send();
 
                     //Done
-                    bRes = true;
+                    result = true;
                 }
                 else
                 {
@@ -113,8 +113,150 @@ namespace WPF_ME_Sign.Models.Services.Menu.Form
                 Console.WriteLine("ERROR: Failed to send mail: " + ex.Message);
             }
 
-            return bRes;
+            return result;
         }
+
+        //public static bool SendEmailViaOutlook(string sFromAddress, ObservableCollection<string> sToAddress, string sCc, string sSubject, string sBody, BodyType bodyType, ObservableCollection<FileModel> arrAttachments, string sBcc = null)
+        //{
+        //    bool bRes = false;
+
+        //    try
+        //    {
+        //        //Get Outlook COM objects
+        //        Outlook.Application app = new Outlook.Application();
+        //        Outlook.MailItem newMail = (Outlook.MailItem)app.CreateItem(Outlook.OlItemType.olMailItem);
+
+        //        foreach (string str in sToAddress)
+        //        {
+        //            if (!String.IsNullOrEmpty(str))
+        //            {
+        //                newMail.Recipients.Add(str);
+        //            }
+        //        }
+        //        //Parse 'sToAddress'
+        //        //if(!string.IsNullOrWhiteSpace(sToAddress))
+        //        //{
+        //        //  string[] arrAddTos = sToAddress.Split(new char[] { ';', ',' });
+        //        //  foreach(string strAddr in arrAddTos)
+        //        //  {
+        //        //    if(!string.IsNullOrWhiteSpace(strAddr) &&
+        //        //        strAddr.IndexOf('@') != -1)
+        //        //    {
+        //        //      newMail.Recipients.Add(strAddr.Trim());
+        //        //    }
+        //        //    else
+        //        //      throw new Exception("Bad to-address: " + sToAddress);
+        //        //  }
+        //        //}
+        //        //else
+        //        //  throw new Exception("Must specify to-address");
+
+        //        //Parse 'sCc'
+        //        if (!string.IsNullOrWhiteSpace(sCc))
+        //        {
+        //            string[] arrAddTos = sCc.Split(new char[] { ';', ',' });
+        //            foreach (string strAddr in arrAddTos)
+        //            {
+        //                if (!string.IsNullOrWhiteSpace(strAddr) &&
+        //                    strAddr.IndexOf('@') != -1)
+        //                {
+        //                    newMail.Recipients.Add(strAddr.Trim());
+        //                }
+        //                else
+        //                    throw new Exception("Bad CC-address: " + sCc);
+        //            }
+        //        }
+
+        //        //Is BCC empty?
+        //        if (!string.IsNullOrWhiteSpace(sBcc))
+        //        {
+        //            newMail.BCC = sBcc.Trim();
+        //        }
+
+        //        //Resolve all recepients
+        //        if (!newMail.Recipients.ResolveAll())
+        //        {
+        //            throw new Exception("Failed to resolve all recipients: " + sToAddress + ";" + sCc);
+        //        }
+
+
+        //        //Set type of message
+        //        switch (bodyType)
+        //        {
+        //            case BodyType.HTML:
+        //                newMail.HTMLBody = sBody;
+        //                break;
+        //            case BodyType.RTF:
+        //                newMail.RTFBody = sBody;
+        //                break;
+        //            case BodyType.PlainText:
+        //                newMail.Body = sBody;
+        //                break;
+        //            default:
+        //                throw new Exception("Bad email body type: " + bodyType);
+        //        }
+
+
+        //        if (arrAttachments != null)
+        //        {
+        //            //Add attachments
+        //            foreach (var strPath in arrAttachments)
+        //            {
+        //                if (File.Exists(strPath.FileName))
+        //                {
+        //                    newMail.Attachments.Add(strPath);
+        //                }
+        //                else
+        //                    throw new Exception("Attachment file is not found: \"" + strPath + "\"");
+        //            }
+        //            //if(File.Exists(arrAttachments))
+        //            //{
+        //            //  newMail.Attachments.Add(arrAttachments);
+        //            //}
+        //        }
+
+        //        //Add subject
+        //        if (!string.IsNullOrWhiteSpace(sSubject))
+        //            newMail.Subject = sSubject;
+
+        //        Outlook.Accounts accounts = app.Session.Accounts;
+        //        Outlook.Account acc = null;
+
+        //        //Look for our account in the Outlook
+        //        foreach (Outlook.Account account in accounts)
+        //        {
+        //            if (account.SmtpAddress.Equals(sFromAddress, StringComparison.CurrentCultureIgnoreCase))
+        //            {
+        //                //Use it
+        //                acc = account;
+        //                break;
+        //            }
+        //        }
+
+        //        //Did we get the account
+        //        if (acc != null)
+        //        {
+        //            //Use this account to send the e-mail. 
+        //            newMail.SendUsingAccount = acc;
+
+        //            //And send it
+        //            ((Outlook._MailItem)newMail).Send();
+
+        //            //Done
+        //            bRes = true;
+        //        }
+        //        else
+        //        {
+        //            throw new Exception("Account does not exist in Outlook: " + sFromAddress);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("ERROR: Failed to send mail: " + ex.Message);
+        //    }
+
+        //    return bRes;
+        //}
 
         public bool FileSizeLimit(string file)
         {
