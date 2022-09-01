@@ -39,13 +39,15 @@ namespace WPF_ME_Sign.Models.Services.Menu.Form
         public void Report(FormModel form, KPIModel kpi)
         {
             const string outputFile = @"D:\\Output\report.xlsx";
-            var template = new XLTemplate(FileHelper.GetTemplatePath("ReportTemplate"));
-            var values = TypeMerger.TypeMerger.Merge(form, kpi);
 
-            template.AddVariable(values);
-            template.Generate();
+            using (var template = new XLTemplate(FileHelper.GetTemplatePath("ReportTemplate")))
+            {
+                var values = TypeMerger.TypeMerger.Merge(form, kpi);
+                template.AddVariable(values);
+                template.Generate();
 
-            template.SaveAs(outputFile);
+                template.SaveAs(outputFile);
+            }
 
             Process.Start(new ProcessStartInfo(outputFile) { UseShellExecute = true });
         }

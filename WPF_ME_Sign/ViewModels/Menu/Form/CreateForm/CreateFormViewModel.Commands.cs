@@ -32,19 +32,24 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
                 }
                 else MessageBox.Show("Fail");
             }
-            else MessageBox.Show("One or some fields are not filled");
         }
 
         private void ExportExecute()
         {
-            _createFormService.Report(GetFormValues(), GetKPIValues());
+            if (DetectFieldEmpty())
+            {
+                _createFormService.Report(GetFormValues(), GetKPIValues());
+            }
         }
 
         private void AddDescribePath()
         {
             if ((bool)_fileDialog.ShowDialog())
             {
-                DesctibePicturePath = CopyTempImage(_fileDialog.FileName);
+                using (var stream = _fileDialog.OpenFile())
+                {
+                    if (_fileDialog.FileName != ImprovePicturePath) DesctibePicturePath = _fileDialog.FileName; DesctibePicturePathTemp = CopyTempImage(_fileDialog.FileName);
+                }
             }
         }
 
@@ -52,7 +57,10 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
         {
             if ((bool)_fileDialog.ShowDialog())
             {
-                ImprovePicturePath = _fileDialog.FileName;
+                using (var stream = _fileDialog.OpenFile())
+                {
+                    if (_fileDialog.FileName != DesctibePicturePath) ImprovePicturePath = _fileDialog.FileName; ImprovePicturePathTemp = CopyTempImage(_fileDialog.FileName);
+                }
             }
         }
     }

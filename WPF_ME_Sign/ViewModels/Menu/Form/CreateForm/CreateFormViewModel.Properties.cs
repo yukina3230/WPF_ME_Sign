@@ -60,6 +60,12 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
         private string _ImprovePicturePath;
         public string ImprovePicturePath { get => _ImprovePicturePath; set { _ImprovePicturePath = value; OnPropertyChanged(); } }
 
+        private string _DesctibePicturePathTemp;
+        public string DesctibePicturePathTemp { get => _DesctibePicturePathTemp; set { _DesctibePicturePathTemp = value; OnPropertyChanged(); } }
+
+        private string _ImprovePicturePathTemp;
+        public string ImprovePicturePathTemp { get => _ImprovePicturePathTemp; set { _ImprovePicturePathTemp = value; OnPropertyChanged(); } }
+
         private string _CreateUserId;
         public string CreateUserId { get => _CreateUserId; set { _CreateUserId = value; OnPropertyChanged(); } }
 

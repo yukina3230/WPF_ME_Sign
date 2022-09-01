@@ -49,8 +49,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
                 Processing = Processing,
                 DescribeProblem = DescribeProblem,
                 ImproveProblem = ImproveProblem,
-                DesctibePicturePath = DesctibePicturePath,
-                ImprovePicturePath = ImprovePicturePath,
+                DesctibePicturePath = DesctibePicturePathTemp,
+                ImprovePicturePath = ImprovePicturePathTemp,
                 CreateUserId = FormUserId,
                 CreateDate = _CreateDate
             };

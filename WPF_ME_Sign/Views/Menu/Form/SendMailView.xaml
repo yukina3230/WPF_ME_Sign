@@ -65,7 +65,7 @@
                     </st:StackPanel>
                 </st:StackPanel>
                 <ui:Button Grid.Row="1" Command="{Binding SendMailCommand}" Content="Send" Margin="0 20"
-                           Appearance="Primary" Width="140" Height="40" HorizontalAlignment="Right">
+                           Appearance="Primary" Icon="Send20" Width="140" Height="40" HorizontalAlignment="Right">
                 </ui:Button>
             </Grid>
         </ScrollViewer>

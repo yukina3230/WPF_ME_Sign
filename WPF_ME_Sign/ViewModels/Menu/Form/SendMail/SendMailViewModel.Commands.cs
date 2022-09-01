@@ -41,7 +41,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
 
         private void OpenFileExecute(object o)
         {
-            _sendMailService.OpenFile(o.ToString());
+            FileModel fileModel = o as FileModel;
+            _sendMailService.OpenFile(fileModel.FileName);
         }
 
         private void RemoveFileExecute(object o)
@@ -51,13 +52,16 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
 
         private void SendMailExecute()
         {
-            if (_sendMailService.SentToMail(GetMailModel()))
+            if (ValidateHelper.DetectFieldEmpty(Title, Content))
             {
-                MessageBox.Show("Success!");
-            }
-            else
-            {
-                MessageBox.Show("Error!");
+                if (_sendMailService.SentToMail(GetMailModel()))
+                {
+                    MessageBox.Show("Success!");
+                }
+                else
+                {
+                    MessageBox.Show("Error!");
+                }
             }
         }
     }
