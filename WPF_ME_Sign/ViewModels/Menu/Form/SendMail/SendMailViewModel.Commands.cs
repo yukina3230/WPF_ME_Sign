@@ -31,7 +31,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
             {
                 foreach (string str in _fileDialog.FileNames)
                 {
-                    if (FileList.FirstOrDefault(x => x.FileName == str) == null)
+                    if (FileList.FirstOrDefault(x => x.FileName == str) == null && _sendMailService.FileSizeLimit(str))
                     {
                         FileList.Add(new FileModel { FileName = str, FileSize = FileHelper.GetFileSize(str) });
                     }

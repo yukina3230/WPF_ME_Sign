@@ -17,9 +17,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
         private CreateFormService _createFormService;
 
         public RelayCommand CreateFormCommand { get; }
-
         public RelayCommand ExportCommand { get; }
-
         public RelayCommand AddDescribePictureCommand { get; }
         public RelayCommand AddImprovePictureCommand { get; }
 

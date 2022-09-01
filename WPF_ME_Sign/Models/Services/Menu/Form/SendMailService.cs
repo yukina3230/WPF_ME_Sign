@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
 using WPF_ME_Sign.Models.Repositories.Menu.Form;
+using System.Windows;
 
 namespace WPF_ME_Sign.Models.Services.Menu.Form
 {
@@ -113,6 +114,22 @@ namespace WPF_ME_Sign.Models.Services.Menu.Form
             }
 
             return bRes;
+        }
+
+        public bool FileSizeLimit(string file)
+        {
+            FileInfo fi = new FileInfo(file);
+            decimal i = 0;
+            i = Convert.ToInt32(fi.Length.ToString());
+            decimal d = 0;
+            d = i / (1024 * 1024); //1024*1024 Kb đổi sang Mb
+
+            if (d > 20)
+            {
+                MessageBox.Show("The software only supports up to 20Mb. Please change size of file!", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            return true;
         }
     }
 }
