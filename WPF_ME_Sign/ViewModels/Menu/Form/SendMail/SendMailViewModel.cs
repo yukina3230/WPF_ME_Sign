@@ -21,8 +21,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
             FileList = new ObservableCollection<FileModel>();
             //ToAddress = _sendMailService.GetToAddress();
             ToAddress = new ObservableCollection<string>();
-            ToAddress.Add("SPG-IT011@spg-sportsgear.com");
             ToAddress.Add("SPG-IT010@spg-sportsgear.com");
+            ToAddress.Add("thienphuc3230@gmail.com");
 
             AddFileCommand = new RelayCommand(AddFileExecute);
             OpenFileCommand = new RelayCommand<object>(o => OpenFileExecute(o), o => true);
@@ -34,7 +34,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.SendMail
         {
             return new MailModel()
             {
-                FromAddress = FromAddress,
+                //FromAddress = FromAddress,
+                FromAddress = "SPG-IT011@spg-sportsgear.com",
                 ToAddress = ToAddress,
                 Title = Title,
                 Content = Content,
