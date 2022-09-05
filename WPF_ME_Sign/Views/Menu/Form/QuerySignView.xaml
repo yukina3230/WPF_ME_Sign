@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_ME_Sign.Views.Menu.Form"
         mc:Ignorable="d"
-        Title="QuerySignView" Height="450" Width="800"
+        Title="QuerySignView" Height="600" Width="1000"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:st="http://schemas.spicytaco.io/"
         Style="{StaticResource UiWindow}"
@@ -18,11 +18,75 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="TextBlock">
-                <Setter Property="Margin" Value="0 0 20 0"></Setter>
-            </Style>
-        </Grid.Resources>
         <ui:TitleBar Grid.Row="0" Title="Query Sign"></ui:TitleBar>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ui:Card Grid.Row="0" Margin="20">
+                <st:AutoGrid ChildMargin="10">
+                    <st:AutoGrid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </st:AutoGrid.ColumnDefinitions>
+                    <st:StackPanel Grid.Column="0" MarginBetweenChildren="10">
+                        <TextBlock Text="Id Search:"></TextBlock>
+                        <ui:TextBox Text="{Binding QueryString}" Margin="0 0 50 0"></ui:TextBox>
+                    </st:StackPanel>
+                    <st:StackPanel Grid.Column="1" MarginBetweenChildren="10">
+                        <TextBlock Text="From Date:"></TextBlock>
+                        <DatePicker Text="{Binding FromDate}" SelectedDateFormat="Short"></DatePicker>
+                    </st:StackPanel>
+                    <st:StackPanel Grid.Column="2" MarginBetweenChildren="10">
+                        <TextBlock Text="To Date:"></TextBlock>
+                        <DatePicker Text="{Binding ToDate}" SelectedDateFormat="Short"></DatePicker>
+                    </st:StackPanel>
+                    <st:StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <RadioButton Content="Unsign" IsChecked="{Binding UnsignCheck}"></RadioButton>
+                        <RadioButton Content="Signed" IsChecked="{Binding SignedCheck}"></RadioButton>
+                    </st:StackPanel>
+                </st:AutoGrid>
+            </ui:Card>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ItemsControl Margin="20" ItemsSource="{Binding SignList}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ui:CardAction Margin="0 0 0 20" ShowChevron="False">
+                                <ui:CardAction.InputBindings>
+                                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.PreviewCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }" CommandParameter="{Binding}"></MouseBinding>
+                                </ui:CardAction.InputBindings>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="6*"></ColumnDefinition>
+                                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding SignId}"></TextBlock>
+                                    <Grid Grid.Row="1" Grid.Column="0"></Grid>
+                                    <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0 0 20 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <ui:Button Grid.Column="0" Margin="0 0 20 0" Content="Export Excel" Appearance="Success" Icon="ArrowExportLtr20" CommandParameter="{Binding}"
+                                               Command="{Binding DataContext.ExportCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
+                                        </ui:Button>
+                                        <ui:Button Grid.Column="1" Content="Sign" Appearance="Primary" Icon="Signature20" CommandParameter="{Binding}"
+                                               Command="{Binding DataContext.SignCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
+                                        </ui:Button>
+                                    </Grid>
+                                </Grid>
+                            </ui:CardAction>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </ui:UiWindow>

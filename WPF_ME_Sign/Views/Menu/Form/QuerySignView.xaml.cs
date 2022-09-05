@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wpf.Ui.Controls;
+using WPF_ME_Sign.ViewModels.Menu.Form.QuerySign;
 
 namespace WPF_ME_Sign.Views.Menu.Form
 {
@@ -20,9 +21,12 @@ namespace WPF_ME_Sign.Views.Menu.Form
     /// </summary>
     public partial class QuerySignView : UiWindow
     {
+        QuerySignViewModel viewModel;
         public QuerySignView()
         {
             InitializeComponent();
+            viewModel = new QuerySignViewModel();
+            DataContext = viewModel;
         }
     }
 }

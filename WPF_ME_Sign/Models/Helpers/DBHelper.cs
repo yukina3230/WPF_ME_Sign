@@ -8,6 +8,6 @@ namespace WPF_ME_Sign.Models.Helpers
 {
     public static class DBHelper
     {
-        public static string OracleConnStr = "Persist Security Info = True; Data Source = spgvn; User Id = at00; Password = 12345678";
+        public static string OracleConnStr = @"DATA SOURCE=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.1.1.44)(PORT=1521)))(CONNECT_DATA=(SID = SPGVN))); PERSIST SECURITY INFO=True;USER ID=at00;PASSWORD=12345678";
     }
 }
