@@ -63,22 +63,33 @@
                                         <ColumnDefinition Width="6*"></ColumnDefinition>
                                         <ColumnDefinition Width="4*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding SignId}"></TextBlock>
-                                    <Grid Grid.Row="1" Grid.Column="0"></Grid>
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <st:StackPanel Grid.Column="0" Orientation="Horizontal" MarginBetweenChildren="10">
+                                                <TextBlock Text="Sign Id:"></TextBlock>
+                                                <TextBlock Text="{Binding SignId}"></TextBlock>
+                                            </st:StackPanel>
+                                        </Grid>
+                                        <Grid Grid.Row="0"></Grid>
+                                    </Grid>
                                     <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0 0 20 0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <ui:Button Grid.Column="0" Margin="0 0 20 0" Content="Export Excel" Appearance="Success" Icon="ArrowExportLtr20" CommandParameter="{Binding}"
-                                               Command="{Binding DataContext.ExportCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
+                                                   Command="{Binding DataContext.ExportCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
                                         </ui:Button>
                                         <ui:Button Grid.Column="1" Content="Sign" Appearance="Primary" Icon="Signature20" CommandParameter="{Binding}"
-                                               Command="{Binding DataContext.SignCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
+                                                   Command="{Binding DataContext.SignCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
                                         </ui:Button>
                                     </Grid>
                                 </Grid>
