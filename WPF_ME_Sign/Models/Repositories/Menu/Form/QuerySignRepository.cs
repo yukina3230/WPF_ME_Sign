@@ -43,7 +43,15 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
                 {
                     foreach (DataRow row in _dataTable.Rows)
                     {
-                        _signList.Add(new SignModel() { SignId = row["sign_id"].ToString() });
+                        _signList.Add(new SignModel()
+                        {
+                            SignId = row["sign_id"].ToString(),
+                            ProjectTitle = row["project_title"].ToString(),
+                            CreateDate = row["create_date"].ToString(),
+                            FormUserId = row["form_user_id"].ToString(),
+                            FormUserName = row["form_user_name"].ToString(),
+                            DeptName = row["department_name"].ToString()
+                        });
                     }
                 }
                 _conn.Close();

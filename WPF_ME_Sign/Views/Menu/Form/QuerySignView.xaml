@@ -58,41 +58,74 @@
                                 <ui:CardAction.InputBindings>
                                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.PreviewCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }" CommandParameter="{Binding}"></MouseBinding>
                                 </ui:CardAction.InputBindings>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
+                                <st:AutoGrid Margin="20 0">
+                                    <st:AutoGrid.ColumnDefinitions>
                                         <ColumnDefinition Width="6*"></ColumnDefinition>
                                         <ColumnDefinition Width="4*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0">
-                                        <Grid.RowDefinitions>
+                                    </st:AutoGrid.ColumnDefinitions>
+                                    <st:AutoGrid Grid.Column="0" ChildMargin="0 8">
+                                        <st:AutoGrid.RowDefinitions>
                                             <RowDefinition></RowDefinition>
                                             <RowDefinition></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Row="0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                        </st:AutoGrid.RowDefinitions>
+                                        <st:AutoGrid.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                            </Style>
+                                            <Style TargetType="st:StackPanel">
+                                                <Setter Property="Margin" Value="0 5 50 0"></Setter>
+                                            </Style>
+                                        </st:AutoGrid.Resources>
+                                        <TextBlock Grid.Row="0" Text="{Binding ProjectTitle}" FontSize="18" FontWeight="Bold"></TextBlock>
+                                        <st:StackPanel Grid.Row="1">
                                             <st:StackPanel Grid.Column="0" Orientation="Horizontal" MarginBetweenChildren="10">
-                                                <TextBlock Text="Sign Id:"></TextBlock>
-                                                <TextBlock Text="{Binding SignId}"></TextBlock>
+                                                <TextBlock Text="Form User Name:" FontSize="16" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding FormUserName}"></TextBlock>
                                             </st:StackPanel>
-                                        </Grid>
-                                        <Grid Grid.Row="0"></Grid>
-                                    </Grid>
-                                    <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0 0 20 0">
-                                        <Grid.ColumnDefinitions>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <st:StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" MarginBetweenChildren="10">
+                                                    <TextBlock Text="Form User Id:" FontSize="16" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="{Binding FormUserId}"></TextBlock>
+                                                </st:StackPanel>
+                                                <st:StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" MarginBetweenChildren="10">
+                                                    <TextBlock Text="Department:" FontSize="16" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="{Binding DeptName}"></TextBlock>
+                                                </st:StackPanel>
+                                                <st:StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" MarginBetweenChildren="10">
+                                                    <TextBlock Text="Sign Id:" FontSize="16" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="{Binding SignId}"></TextBlock>
+                                                </st:StackPanel>
+                                                <st:StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" MarginBetweenChildren="10">
+                                                    <TextBlock Text="Create Date:" FontSize="16" FontWeight="Bold"></TextBlock>
+                                                    <TextBlock Text="{Binding CreateDate}"></TextBlock>
+                                                </st:StackPanel>
+                                            </Grid>
+                                        </st:StackPanel>
+                                    </st:AutoGrid>
+                                    <st:AutoGrid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" ChildMargin="20">
+                                        <st:AutoGrid.ColumnDefinitions>
                                             <ColumnDefinition></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <ui:Button Grid.Column="0" Margin="0 0 20 0" Content="Export Excel" Appearance="Success" Icon="ArrowExportLtr20" CommandParameter="{Binding}"
+                                        </st:AutoGrid.ColumnDefinitions>
+                                        <ui:Button Grid.Column="0" Content="Export Excel" Width="120" Height="40"
+                                                   Appearance="Success" Icon="ArrowExportLtr20" CommandParameter="{Binding}"
                                                    Command="{Binding DataContext.ExportCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
                                         </ui:Button>
-                                        <ui:Button Grid.Column="1" Content="Sign" Appearance="Primary" Icon="Signature20" CommandParameter="{Binding}"
+                                        <ui:Button Grid.Column="1" Content="Sign" Width="120" Height="40"
+                                                   Appearance="Primary" Icon="Signature20" CommandParameter="{Binding}"
                                                    Command="{Binding DataContext.SignCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
                                         </ui:Button>
-                                    </Grid>
-                                </Grid>
+                                    </st:AutoGrid>
+                                </st:AutoGrid>
                             </ui:CardAction>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
