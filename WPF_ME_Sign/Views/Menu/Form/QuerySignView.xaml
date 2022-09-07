@@ -34,7 +34,7 @@
                     </st:AutoGrid.ColumnDefinitions>
                     <st:StackPanel Grid.Column="0" MarginBetweenChildren="10">
                         <TextBlock Text="Id Search:"></TextBlock>
-                        <ui:TextBox Text="{Binding QueryString}" Margin="0 0 50 0"></ui:TextBox>
+                        <ui:TextBox Text="{Binding FilterString, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 50 0" PlaceholderText="Query by Sign Id, User Id or User Name"></ui:TextBox>
                     </st:StackPanel>
                     <st:StackPanel Grid.Column="1" MarginBetweenChildren="10">
                         <TextBlock Text="From Date:"></TextBlock>

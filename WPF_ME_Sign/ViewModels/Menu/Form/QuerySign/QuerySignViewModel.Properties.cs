@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,5 +29,11 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
 
         private ObservableCollection<SignModel> _SignList;
         public ObservableCollection<SignModel> SignList { get => _SignList; set { _SignList = value; OnPropertyChanged(); } }
+
+        private ICollectionView _SignFilterList;
+        public ICollectionView SignFilterList { get => _SignFilterList; private set { _SignFilterList = value; OnPropertyChanged(); } }
+
+        private string _FilterString;
+        public string FilterString { get => _FilterString; set { _FilterString = value; OnPropertyChanged(); FilterCollection(); } }
     }
 }

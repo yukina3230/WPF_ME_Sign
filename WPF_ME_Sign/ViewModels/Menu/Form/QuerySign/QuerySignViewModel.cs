@@ -5,7 +5,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using WPF_ME_Sign.Models;
+using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.Models.Services.Menu.Form;
 
 namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
@@ -20,10 +22,43 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
             _querySignService = new QuerySignService();
 
             SignList = _querySignService.LoadSignList();
+            SignFilterList = CollectionViewSource.GetDefaultView(SignList);
+            SignFilterList.Filter = new Predicate<object>(Filter);
 
             PreviewCommand = new RelayCommand<object>(o => PreviewExectute(o), o => true);
             ExportCommand = new RelayCommand<object>(o => ExportExectute(o), o => true);
             SignCommand = new RelayCommand<object>(o => SignExectute(o), o => true);
+        }
+
+        private SignModel GetSignModel(SignModel sign)
+        {
+            return new SignModel()
+            {
+                SignId = sign.SignId,
+                UserId = InfoHelper.UserId,
+                SignDate = DateTime.Today.ToString("dd/MM/yyyy")
+            };
+        }
+
+        private void FilterCollection()
+        {
+            if (SignFilterList != null) SignFilterList.Refresh();
+        }
+
+        public bool Filter(object o)
+        {
+            var sign = o as SignModel;
+
+            if (sign != null)
+            {
+                if (!string.IsNullOrEmpty(FilterString))
+                {
+                    return sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString);
+                }
+                return true;
+            }
+
+            return false;
         }
     }
 }

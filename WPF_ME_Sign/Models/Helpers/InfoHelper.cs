@@ -8,7 +8,7 @@ namespace WPF_ME_Sign.Models.Helpers
 {
     public static class InfoHelper
     {
-        public static string UserId;
+        public static string UserId = "69420";
         public static string UserName;
         public static string UserDept;
     }

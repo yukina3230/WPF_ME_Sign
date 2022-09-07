@@ -64,5 +64,29 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
 
             return _signList;
         }
+
+        private bool InsertSign(SignModel sign)
+        {
+            _cmdStr = FileHelper.GetSQLString("InsertSigner");
+
+            try
+            {
+                _conn.Open();
+                _command = new OracleCommand(_cmdStr, _conn);
+                _command.Parameters.Add("sign_id", sign.SignId);
+                _command.Parameters.Add("user_id", sign.UserId);
+                _command.Parameters.Add("create_date", sign.SignDate);
+                result = (_command.ExecuteNonQuery() > 0) ? true : false;
+                _conn.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+            return false;
+        }
     }
 }
