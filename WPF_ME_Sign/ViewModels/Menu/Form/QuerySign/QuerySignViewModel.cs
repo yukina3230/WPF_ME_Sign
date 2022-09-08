@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using MoreLinq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -55,10 +56,24 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
                 {
                     return sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString);
                 }
+                if (UnsignCheck)
+                {
+                    return sign.SignStatus.Contains("U");
+                }
+                if (SignedCheck)
+                {
+                    return sign.SignStatus.Contains("S");
+                }
                 return true;
             }
 
             return false;
+        }
+
+        private void UpdateSignStatus(string signId)
+        {
+            SignList.Where(x => x.SignId == signId).ForEach(x => x.SignStatus = "S");
+            FilterCollection();
         }
     }
 }

@@ -26,5 +26,7 @@ namespace WPF_ME_Sign.Models
         public string FormUserName { get; set; }
 
         public string DeptName { get; set; }
+
+        public string SignStatus { get; set; }
     }
 }

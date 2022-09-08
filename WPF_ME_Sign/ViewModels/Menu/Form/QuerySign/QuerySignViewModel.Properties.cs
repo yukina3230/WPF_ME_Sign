@@ -22,10 +22,10 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
         public string ToDate { get => _ToDate; set { _ToDate = value; OnPropertyChanged(); } }
 
         private bool _UnsignCheck;
-        public bool UnsignCheck { get => _UnsignCheck; set { _UnsignCheck = value; OnPropertyChanged(); } }
+        public bool UnsignCheck { get => _UnsignCheck; set { _UnsignCheck = value; OnPropertyChanged(); FilterCollection(); } }
 
         private bool _SignedCheck;
-        public bool SignedCheck { get => _SignedCheck; set { _SignedCheck = value; OnPropertyChanged(); } }
+        public bool SignedCheck { get => _SignedCheck; set { _SignedCheck = value; OnPropertyChanged(); FilterCollection(); } }
 
         private ObservableCollection<SignModel> _SignList;
         public ObservableCollection<SignModel> SignList { get => _SignList; set { _SignList = value; OnPropertyChanged(); } }

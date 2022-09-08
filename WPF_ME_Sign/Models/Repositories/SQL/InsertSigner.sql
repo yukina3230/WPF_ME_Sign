@@ -1,5 +1,7 @@
-insert into me_signer (sign_id, user_id, create_date)
+insert into me_signer (signer_serial_key, sign_id, user_id, create_date)
 values (
-        :sign_id,
-        :user_id,
-        to_date(:create_date, 'ddMMyyyy')
+                seq_me_sign_serial_key.nextval,
+                :sign_id,
+                :user_id,
+                to_date(:create_date, 'dd/MM/yyyy')
+        )
