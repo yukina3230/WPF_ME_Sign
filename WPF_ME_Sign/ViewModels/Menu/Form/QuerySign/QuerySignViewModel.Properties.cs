@@ -12,14 +12,11 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
 {
     public partial class QuerySignViewModel : ObservableObject
     {
-        private string _QueryString;
-        public string QueryString { get => _QueryString; set { _QueryString = value; OnPropertyChanged(); } }
-
         private string _FromDate;
-        public string FromDate { get => _FromDate; set { _FromDate = value; OnPropertyChanged(); } }
+        public string FromDate { get => _FromDate; set { _FromDate = value; OnPropertyChanged(); LoadSignList(); } }
 
         private string _ToDate;
-        public string ToDate { get => _ToDate; set { _ToDate = value; OnPropertyChanged(); } }
+        public string ToDate { get => _ToDate; set { _ToDate = value; OnPropertyChanged(); LoadSignList(); } }
 
         private bool _UnsignCheck;
         public bool UnsignCheck { get => _UnsignCheck; set { _UnsignCheck = value; OnPropertyChanged(); FilterCollection(); } }

@@ -17,18 +17,25 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
     {
         public QuerySignViewModel()
         {
-            FromDate = DateTime.Today.ToString();
-            ToDate = DateTime.Today.ToString();
             UnsignCheck = true;
             _querySignService = new QuerySignService();
+            FromDate = DateTime.Now.ToString("dd/MM/yyyy");
+            ToDate = DateTime.Now.ToString("dd/MM/yyyy");
 
-            SignList = _querySignService.LoadSignList();
+            SignList = _querySignService.LoadSignList(FromDate, ToDate);
             SignFilterList = CollectionViewSource.GetDefaultView(SignList);
             SignFilterList.Filter = new Predicate<object>(Filter);
 
             PreviewCommand = new RelayCommand<object>(o => PreviewExectute(o), o => true);
             ExportCommand = new RelayCommand<object>(o => ExportExectute(o), o => true);
             SignCommand = new RelayCommand<object>(o => SignExectute(o), o => true);
+        }
+
+        private void LoadSignList()
+        {
+            SignList = _querySignService.LoadSignList(FromDate, ToDate);
+            SignFilterList = CollectionViewSource.GetDefaultView(SignList);
+            SignFilterList.Filter = new Predicate<object>(Filter);
         }
 
         private SignModel GetSignModel(SignModel sign)

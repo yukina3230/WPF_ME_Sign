@@ -27,7 +27,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
             _conn = new OracleConnection(_connStr);
         }
 
-        public ObservableCollection<SignModel> LoadSignList()
+        public ObservableCollection<SignModel> LoadSignList(string fromDate, string toDate)
         {
             ObservableCollection<SignModel> _signList = new ObservableCollection<SignModel>();
             _cmdStr = FileHelper.GetSQLString("GetSignList");
@@ -36,6 +36,8 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
             {
                 _conn.Open();
                 _command = new OracleCommand(_cmdStr, _conn);
+                _command.Parameters.Add("fromDate", fromDate);
+                _command.Parameters.Add("toDate", toDate);
                 _dataAdapter = new OracleDataAdapter(_command);
                 _dataTable = new DataTable();
 

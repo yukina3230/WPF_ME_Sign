@@ -17,7 +17,7 @@ namespace WPF_ME_Sign.Models.Services.Menu.Form
             _querySignRepository = new QuerySignRepository();
         }
 
-        public ObservableCollection<SignModel> LoadSignList() => _querySignRepository.LoadSignList();
+        public ObservableCollection<SignModel> LoadSignList(string fromDate, string toDate) => _querySignRepository.LoadSignList(fromDate, toDate);
 
         public bool Sign(SignModel sign) => _querySignRepository.InsertSign(sign);
     }

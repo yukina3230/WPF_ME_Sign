@@ -38,11 +38,11 @@
                     </st:StackPanel>
                     <st:StackPanel Grid.Column="1" MarginBetweenChildren="10">
                         <TextBlock Text="From Date:"></TextBlock>
-                        <DatePicker Text="{Binding FromDate}" SelectedDateFormat="Short"></DatePicker>
+                        <DatePicker Text="{Binding FromDate, Mode=TwoWay}" SelectedDateFormat="Short" x:Name="dpFromDate" PreviewKeyDown="dpFromDate_PreviewKeyDown"></DatePicker>
                     </st:StackPanel>
                     <st:StackPanel Grid.Column="2" MarginBetweenChildren="10">
                         <TextBlock Text="To Date:"></TextBlock>
-                        <DatePicker Text="{Binding ToDate}" SelectedDateFormat="Short"></DatePicker>
+                        <DatePicker Text="{Binding ToDate, Mode=TwoWay}" SelectedDateFormat="Short" x:Name="dpToDate" PreviewKeyDown="dpToDate_PreviewKeyDown"></DatePicker>
                     </st:StackPanel>
                     <st:StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
                         <RadioButton Content="Unsign" IsChecked="{Binding UnsignCheck}"></RadioButton>

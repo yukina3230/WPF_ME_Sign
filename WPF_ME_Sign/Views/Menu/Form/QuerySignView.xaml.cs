@@ -28,5 +28,15 @@ namespace WPF_ME_Sign.Views.Menu.Form
             viewModel = new QuerySignViewModel();
             DataContext = viewModel;
         }
+
+        private void dpFromDate_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void dpToDate_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
