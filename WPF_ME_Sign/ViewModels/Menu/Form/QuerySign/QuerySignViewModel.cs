@@ -74,7 +74,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
                         return sign.SignStatus.Contains("S");
                     }
                 }
-                return true;
             }
 
             return false;
