@@ -52,17 +52,27 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
 
             if (sign != null)
             {
-                if (!string.IsNullOrEmpty(FilterString))
-                {
-                    return sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString);
-                }
                 if (UnsignCheck)
                 {
-                    return sign.SignStatus.Contains("U");
+                    if (!string.IsNullOrEmpty(FilterString))
+                    {
+                        return sign.SignStatus.Contains("U") && (sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString));
+                    }
+                    else
+                    {
+                        return sign.SignStatus.Contains("U");
+                    }
                 }
                 if (SignedCheck)
                 {
-                    return sign.SignStatus.Contains("S");
+                    if (!string.IsNullOrEmpty(FilterString))
+                    {
+                        return sign.SignStatus.Contains("S") && (sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString));
+                    }
+                    else
+                    {
+                        return sign.SignStatus.Contains("S");
+                    }
                 }
                 return true;
             }
