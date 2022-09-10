@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WPF_ME_Sign.Models.Helpers;
 
-namespace WPF_ME_Sign.Models.Repositories
+namespace WPF_ME_Sign.Models.Repositories.Login
 {
     public class LoginRepository
     {

@@ -3,6 +3,7 @@ using MoreLinq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,9 +34,12 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
 
         private void LoadSignList()
         {
-            SignList = _querySignService.LoadSignList(FromDate, ToDate);
-            SignFilterList = CollectionViewSource.GetDefaultView(SignList);
-            SignFilterList.Filter = new Predicate<object>(Filter);
+            if (FromDate != null && ToDate != null)
+            {
+                SignList = _querySignService.LoadSignList(ConvertDate(FromDate), ConvertDate(ToDate));
+                SignFilterList = CollectionViewSource.GetDefaultView(SignList);
+                SignFilterList.Filter = new Predicate<object>(Filter);
+            }
         }
 
         private SignModel GetSignModel(SignModel sign)
@@ -84,6 +88,12 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
             }
 
             return false;
+        }
+
+        private string ConvertDate(string date)
+        {
+            IFormatProvider culture = new CultureInfo("vi-VN", true);
+            return DateTime.ParseExact(date, "dd/MM/yyyy", culture).ToShortDateString();
         }
 
         private void UpdateSignStatus(string signId)
