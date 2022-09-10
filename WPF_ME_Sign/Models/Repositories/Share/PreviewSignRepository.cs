@@ -45,7 +45,7 @@ namespace WPF_ME_Sign.Models.Repositories.Share
                     {
                         _signerList.Add(new SignModel()
                         { 
-                            UserId = row["department_id"].ToString(),
+                            UserId = row["user_id"].ToString(),
                             DeptName = row["department_name"].ToString() 
                         });
                     }
