@@ -104,13 +104,15 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
 
         private bool UpdateSignStatus(string signId)
         {
-            _cmdStr = FileHelper.GetSQLString("UpdateSignedStatus");
+            string status = TotalSignerStatus(signId);
+            _cmdStr = FileHelper.GetSQLString("UpdateSignStatus");
 
             try
             {
                 _conn.Open();
                 _command = new OracleCommand(_cmdStr, _conn);
-                _command.Parameters.Add("sign_id", signId);
+                _command.Parameters.Add("signStatus", status);
+                _command.Parameters.Add("signId", signId);
                 result = (_command.ExecuteNonQuery() > 0) ? true : false;
                 _conn.Close();
                 return result;
@@ -122,6 +124,33 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
             }
 
             return false;
+        }
+
+        private string TotalSignerStatus(string signId)
+        {
+            _cmdStr = FileHelper.GetSQLString("GetTotalSigner");
+            string result = "W";
+
+            try
+            {
+                _conn.Open();
+                _command = new OracleCommand(_cmdStr, _conn);
+                _command.Parameters.Add("sign_id", signId);
+                int total = int.Parse(_command.ExecuteScalar().ToString());
+
+                if (total >= 5)
+                {
+                    result = "D";
+                }
+                _conn.Close();
+            }
+            catch (Exception ex)
+            {
+                _conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+            return result;
         }
     }
 }

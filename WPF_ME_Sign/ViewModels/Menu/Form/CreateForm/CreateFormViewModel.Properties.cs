@@ -10,7 +10,7 @@ using WPF_ME_Sign.Models;
 
 namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
 {
-    public partial class CreateFormViewModel : ObservableObject
+    public partial class CreateFormViewModel
     {
         private string _SignId;
         public string SignId { get => _SignId; set { _SignId = value; OnPropertyChanged(); } }

@@ -67,11 +67,11 @@
                             </Grid.ColumnDefinitions>
                             <st:StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Người đề xuất dự án:"></TextBlock>
-                                <ui:TextBox Text="{Binding FormUserName}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <ui:TextBox Text="{Binding FormUserName}" st:StackPanel.Fill="Fill" IsEnabled="False"></ui:TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Số Thẻ:"></TextBlock>
-                                <ui:TextBox Text="{Binding FormUserId}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <ui:TextBox Text="{Binding FormUserId}" st:StackPanel.Fill="Fill" IsEnabled="False"></ui:TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Text="Điểm:"></TextBlock>
@@ -260,15 +260,8 @@
                 </Grid>
                 <Separator></Separator>
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="8*"></ColumnDefinition>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <ui:Button Grid.Column="0" Content="SAVE" Command="{Binding CreateFormCommand}" Padding="35 15" FontSize="15"
+                    <ui:Button Content="SAVE" Command="{Binding CreateFormCommand}" Padding="35 15" FontSize="15"
                                Icon="Save24" HorizontalAlignment="Right" Margin="0 0 20 20" Appearance="Primary">
-                    </ui:Button>
-                    <ui:Button Grid.Column="1" Content="Export" Command="{Binding ExportCommand}" Padding="35 15" FontSize="15"
-                               Icon="Save24" HorizontalAlignment="Center" Margin="0 0 0 20" Appearance="Secondary">
                     </ui:Button>
                 </Grid>
             </st:StackPanel>

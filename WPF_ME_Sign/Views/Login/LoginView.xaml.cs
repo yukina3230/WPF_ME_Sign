@@ -19,7 +19,7 @@ namespace WPF_ME_Sign.Views.Login
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : UiWindow
+    public partial class LoginView : Window
     {
         private LoginViewModel _viewModel;
         public LoginView()

@@ -29,7 +29,6 @@
     <Folder Include="Components\Controls\" />
     <Folder Include="Resources\Temp\" />
     <Folder Include="Resources\Temp\" />
-    <Folder Include="ViewModels\Main\History\" />
   </ItemGroup>
 
 </Project>

@@ -11,25 +11,36 @@ using System.Windows.Data;
 using WPF_ME_Sign.Models;
 using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.Models.Services.Menu.Form;
+using WPF_ME_Sign.Models.Services.Share;
 
 namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
 {
-    public partial class QuerySignViewModel
+    public partial class QuerySignViewModel : BaseViewModel
     {
+        QuerySignService _querySignService;
+        PreviewSignService _previewSignService;
+
         public QuerySignViewModel()
         {
-            UnsignCheck = true;
             _querySignService = new QuerySignService();
-            FromDate = DateTime.Now.ToString("dd/MM/yyyy");
-            ToDate = DateTime.Now.ToString("dd/MM/yyyy");
+            _previewSignService = new PreviewSignService();
+            UnsignCheck = true;
+            SignShow = SignVisibility(InfoHelper.UserId);
+            FromDate = DateTime.Today;
+            ToDate = DateTime.Today;
 
-            SignList = _querySignService.LoadSignList(FromDate, ToDate);
+            SignList = _querySignService.LoadSignList(ConvertDate(FromDate), ConvertDate(ToDate));
             SignFilterList = CollectionViewSource.GetDefaultView(SignList);
             SignFilterList.Filter = new Predicate<object>(Filter);
 
             PreviewCommand = new RelayCommand<object>(o => PreviewExectute(o), o => true);
             ExportCommand = new RelayCommand<object>(o => ExportExectute(o), o => true);
             SignCommand = new RelayCommand<object>(o => SignExectute(o), o => true);
+        }
+
+        private bool SignVisibility(string userId)
+        {
+            return _previewSignService.SignCheck(userId);
         }
 
         private void LoadSignList()
@@ -40,16 +51,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
                 SignFilterList = CollectionViewSource.GetDefaultView(SignList);
                 SignFilterList.Filter = new Predicate<object>(Filter);
             }
-        }
-
-        private SignModel GetSignModel(SignModel sign)
-        {
-            return new SignModel()
-            {
-                SignId = sign.SignId,
-                UserId = InfoHelper.UserId,
-                SignDate = DateTime.Today.ToString("dd/MM/yyyy")
-            };
         }
 
         private void FilterCollection()
@@ -67,22 +68,22 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
                 {
                     if (!string.IsNullOrEmpty(FilterString))
                     {
-                        return sign.SignStatus.Contains("U") && (sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString));
+                        return sign.SignStatus.Contains("W") && (sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString));
                     }
                     else
                     {
-                        return sign.SignStatus.Contains("U");
+                        return sign.SignStatus.Contains("W");
                     }
                 }
                 if (SignedCheck)
                 {
                     if (!string.IsNullOrEmpty(FilterString))
                     {
-                        return sign.SignStatus.Contains("S") && (sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString));
+                        return sign.SignStatus.Contains("D") && (sign.SignId.Contains(FilterString) || sign.FormUserId.Contains(FilterString) || sign.FormUserName.Contains(FilterString));
                     }
                     else
                     {
-                        return sign.SignStatus.Contains("S");
+                        return sign.SignStatus.Contains("D");
                     }
                 }
             }
@@ -90,10 +91,11 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
             return false;
         }
 
-        private string ConvertDate(string date)
+        private string ConvertDate(DateTime date)
         {
-            IFormatProvider culture = new CultureInfo("vi-VN", true);
-            return DateTime.ParseExact(date, "dd/MM/yyyy", culture).ToShortDateString();
+            IFormatProvider culture = new CultureInfo("fr-FR", true);
+            //return DateTime.ParseExact(date, "dd/MM/yyyy", culture).ToShortDateString();
+            return date.ToString("dd/MM/yyyy", culture);
         }
 
         private void UpdateSignStatus(string signId)

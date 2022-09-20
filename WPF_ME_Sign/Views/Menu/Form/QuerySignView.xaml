@@ -38,11 +38,15 @@
                     </st:StackPanel>
                     <st:StackPanel Grid.Column="1" MarginBetweenChildren="10">
                         <TextBlock Text="From Date:"></TextBlock>
-                        <DatePicker Text="{Binding FromDate, Mode=TwoWay}" SelectedDateFormat="Short" x:Name="dpFromDate" PreviewKeyDown="dpFromDate_PreviewKeyDown"></DatePicker>
+                        <DatePicker SelectedDate="{Binding FromDate, Mode=TwoWay}" SelectedDateFormat="Short" IsTodayHighlighted="True"
+                                    x:Name="dpFromDate" PreviewKeyDown="dpFromDate_PreviewKeyDown">
+                        </DatePicker>
                     </st:StackPanel>
                     <st:StackPanel Grid.Column="2" MarginBetweenChildren="10">
                         <TextBlock Text="To Date:"></TextBlock>
-                        <DatePicker Text="{Binding ToDate, Mode=TwoWay}" SelectedDateFormat="Short" x:Name="dpToDate" PreviewKeyDown="dpToDate_PreviewKeyDown"></DatePicker>
+                        <DatePicker SelectedDate="{Binding ToDate, Mode=TwoWay}" SelectedDateFormat="Short" IsTodayHighlighted="True"
+                                    x:Name="dpToDate" PreviewKeyDown="dpToDate_PreviewKeyDown">
+                        </DatePicker>
                     </st:StackPanel>
                     <st:StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
                         <RadioButton Content="Unsign" IsChecked="{Binding UnsignCheck}"></RadioButton>
@@ -120,7 +124,7 @@
                                                    Appearance="Success" Icon="ArrowExportLtr20" CommandParameter="{Binding}"
                                                    Command="{Binding DataContext.ExportCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
                                         </ui:Button>
-                                        <ui:Button Grid.Column="1" Content="Sign" Width="120" Height="50" Visibility="{Binding DataContext.UnsignCheck, RelativeSource={RelativeSource AncestorType=ItemsControl}, Converter={StaticResource BooleanToVisibilityConverter} }"
+                                        <ui:Button Grid.Column="1" Content="Sign" Width="120" Height="50" Visibility="{Binding DataContext.SignShow, RelativeSource={RelativeSource AncestorType=ItemsControl}, Converter={StaticResource BooleanToVisibilityConverter} }"
                                                    Appearance="Primary" Icon="Signature20" CommandParameter="{Binding}"
                                                    Command="{Binding DataContext.SignCommand, RelativeSource={RelativeSource AncestorType=ItemsControl} }">
                                         </ui:Button>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wpf.Ui.Controls;
 using WPF_ME_Sign.Models;
+using WPF_ME_Sign.ViewModels.Share.PreviewSign;
 
 namespace WPF_ME_Sign.Views.Share
 {
@@ -21,14 +22,18 @@ namespace WPF_ME_Sign.Views.Share
     /// </summary>
     public partial class PreviewSignView : UiWindow
     {
+        private PreviewSignViewModel _previewSignViewModel;
+
         public PreviewSignView()
         {
             InitializeComponent();
         }
 
-        public PreviewSignView(FormModel form, SignPreviewModel signPreview)
+        public PreviewSignView(string signId)
         {
             InitializeComponent();
+            _previewSignViewModel = new PreviewSignViewModel(signId);
+            DataContext = _previewSignViewModel;
         }
     }
 }

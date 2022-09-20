@@ -8,30 +8,35 @@ using System.Threading.Tasks;
 using System.Windows;
 using WPF_ME_Sign.Models;
 using WPF_ME_Sign.Models.Services.Menu.Form;
+using WPF_ME_Sign.Views.Share;
 
 namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
 {
     public partial class QuerySignViewModel
     {
-        private QuerySignService _querySignService;
-
         public RelayCommand<object> PreviewCommand { get; }
         public RelayCommand<object> ExportCommand { get; }
         public RelayCommand<object> SignCommand { get; }
 
         private void PreviewExectute(object o)
         {
-            MessageBox.Show("Show Preview");
+            var a = o as SignModel;
+            string signId = a.SignId;
+            PreviewSignView previewSignView = new PreviewSignView(signId);
+            previewSignView.Show();
         }
 
         private void ExportExectute(object o)
         {
-            MessageBox.Show("Exported");
+            var a = o as SignModel;
+            string signId = a.SignId;
+            Report(_previewSignService.GetPreview(signId));
         }
 
         private void SignExectute(object o)
         {
-            var sign = GetSignModel(o as SignModel);
+            var a = o as SignModel;
+            SignModel sign = GetSignModel(a.SignId);
             if (_querySignService.Sign(sign))
             {
                 MessageBox.Show($"Form {sign.SignId} has been signed");

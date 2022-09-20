@@ -12,23 +12,26 @@ using WPF_ME_Sign.Models.Services.Menu.Form;
 
 namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
 {
-    public partial class CreateFormViewModel
+    public partial class CreateFormViewModel : BaseViewModel
     {
         public CreateFormViewModel()
         {
             ClearTempFolder();
 
             CreateDate = DateTime.Now.ToString("dd/MM/yyyy");
+            FormUserId = InfoHelper.UserId;
+            FormUserName = InfoHelper.UserName;
             _CreateDate = DateTime.Now.ToString("ddMMyyyy");
             _fileDialog = new OpenFileDialog();
             _fileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;";
             _fileDialog.FilterIndex = 1;
             _fileDialog.Multiselect = false;
             _createFormService = new CreateFormService();
+            _querySignService = new QuerySignService();
+
             AddDescribePictureCommand = new RelayCommand(AddDescribePath);
             AddImprovePictureCommand = new RelayCommand(AddImprovePath);
             CreateFormCommand = new RelayCommand(CreateFormExecute);
-            ExportCommand = new RelayCommand(ExportExecute);
             DeptList = _createFormService.LoadDeptList();
         }
 
@@ -49,17 +52,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
                 Processing = Processing,
                 DescribeProblem = DescribeProblem,
                 ImproveProblem = ImproveProblem,
-                DesctibePicturePath = DesctibePicturePathTemp,
-                ImprovePicturePath = ImprovePicturePathTemp,
-                CreateUserId = FormUserId,
-                CreateDate = _CreateDate
-            };
-        }
-
-        private KPIModel GetKPIValues()
-        {
-            return new KPIModel()
-            {
+                DesctibePicturePath = _createFormService.CopyImageToServer(SignId, DesctibePicturePath, "D"),
+                ImprovePicturePath = _createFormService.CopyImageToServer(SignId, ImprovePicturePath, "I"),
                 Manpower_A = Manpower_A,
                 CT_A = CT_A,
                 EFF_A = EFF_A,
@@ -68,82 +62,38 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
                 CT_B = CT_B,
                 EFF_B = EFF_B,
                 Material_B = Material_B,
+                CreateUserId = FormUserId,
+                CreateDate = _CreateDate
             };
         }
-
-        private SignModel GetSignValues()
-        {
-            return new SignModel()
-            {
-                UserId = FormUserId,
-                SignDate = _CreateDate
-            };
-        }
-
-        //private FormModel GetFormValues()
-        //{
-        //    return new FormModel()
-        //    {
-        //        SignId = "1",
-        //        DeptId = "1",
-        //        FormUserId = "1",
-        //        Line = "1",
-        //        ProjectTitle = "1",
-        //        Score = "1",
-        //        Model = "1",
-        //        Article = "1",
-        //        Processing = "1",
-        //        DescribeProblem = "1",
-        //        ImproveProblem = "1",
-        //        DesctibePicturePath = "1",
-        //        ImprovePicturePath = "1",
-        //        CreateUserId = "1",
-        //        CreateDate = _CreateDate
-        //    };
-        //}
-
-        //private KPIModel GetKPIValues()
-        //{
-        //    return new KPIModel()
-        //    {
-        //        Manpower_A = "1",
-        //        CT_A = "1",
-        //        EFF_A = "1",
-        //        Material_A = "1",
-        //        Manpower_B = "1",
-        //        CT_B = "1",
-        //        EFF_B = "1",
-        //        Material_B = "1",
-        //    };
-        //}
-
-        //private SignModel GetSignValues()
-        //{
-        //    return new SignModel()
-        //    {
-        //        UserId = "1",
-        //        SignDate = _CreateDate
-        //    };
-        //}
 
         private bool DetectFieldEmpty()
         {
-            return ValidateHelper.DetectFieldEmpty(SignId, DeptId, Line, ProjectTitle, FormUserId, Score, Model, Article, Processing, DescribeProblem, ImproveProblem, DesctibePicturePath, ImprovePicturePath);
+            return ValidateHelper.DetectFieldEmpty
+            (
+                SignId,
+                DeptId,
+                Line,
+                ProjectTitle,
+                FormUserId,
+                Score,
+                Model,
+                Article,
+                Processing,
+                DescribeProblem,
+                ImproveProblem,
+                DesctibePicturePath,
+                ImprovePicturePath, 
+                Manpower_A,
+                CT_A,
+                EFF_A,
+                Material_A,
+                Manpower_B,
+                CT_B,
+                EFF_B,
+                Material_B
+            );
         }
-
-        //private void Copy()
-        //{
-        //    string sourceFile = @"D:\Set.ini";
-        //    string destinationFile = @"\\10.1.1.46\New folder (2)\New folder\Set.ini";
-        //    try
-        //    {
-        //        File.Copy(sourceFile, destinationFile, true);
-        //    }
-        //    catch (IOException iox)
-        //    {
-        //        Console.WriteLine(iox.Message);
-        //    }
-        //}
 
         private string CopyTempImage(string sourceFile)
         {

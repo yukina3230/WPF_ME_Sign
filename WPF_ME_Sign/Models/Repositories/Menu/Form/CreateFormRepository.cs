@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,13 +29,11 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
             _conn = new OracleConnection(_connStr);
         }
 
-        public bool CreateNewForm(FormModel form, KPIModel kpi, SignModel sign)
+        public bool CreateNewForm(FormModel form)
         {
             try
             {
-                if (InsertKPI(kpi)) if (CreateForm(form)) if (InsertSign(sign))
-
-                return true;
+                return CreateForm(form);
             }
             catch (Exception ex)
             {
@@ -65,60 +64,17 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
                 _command.Parameters.Add("improve_problem", form.ImproveProblem);
                 _command.Parameters.Add("picture_describe_problem", form.DesctibePicturePath);
                 _command.Parameters.Add("picture_improve_problem", form.ImprovePicturePath);
+                _command.Parameters.Add("manpower_a", form.Manpower_A);
+                _command.Parameters.Add("ct_a", form.CT_A);
+                _command.Parameters.Add("eff_a", form.EFF_A);
+                _command.Parameters.Add("material_a", form.Material_A);
+                _command.Parameters.Add("manpower_b", form.Manpower_B);
+                _command.Parameters.Add("ct_b", form.CT_B);
+                _command.Parameters.Add("eff_b", form.EFF_B);
+                _command.Parameters.Add("material_b", form.Material_B);
                 _command.Parameters.Add("create_user_id", form.CreateUserId);
                 _command.Parameters.Add("create_date", form.CreateDate);
-                _command.Parameters.Add("status", 'N');
-                result = (_command.ExecuteNonQuery() > 0) ? true : false;
-                _conn.Close();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                _conn.Close();
-                MessageBox.Show(ex.ToString());
-            }
-            return false;
-        }
-
-        private bool InsertKPI(KPIModel kpi)
-        {
-            _cmdStr = FileHelper.GetSQLString("CreateKPI");
-
-            try
-            {
-                _conn.Open();
-                _command = new OracleCommand(_cmdStr, _conn);
-                _command.Parameters.Add("manpower_a", kpi.Manpower_A);
-                _command.Parameters.Add("ct_a", kpi.CT_A);
-                _command.Parameters.Add("eff_a", kpi.EFF_A);
-                _command.Parameters.Add("material_a", kpi.Material_A);
-                _command.Parameters.Add("manpower_b", kpi.Manpower_B);
-                _command.Parameters.Add("ct_b", kpi.CT_B);
-                _command.Parameters.Add("eff_b", kpi.EFF_B);
-                _command.Parameters.Add("material_b", kpi.Material_B);
-                result = (_command.ExecuteNonQuery() > 0) ? true : false;
-                _conn.Close();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                _conn.Close();
-                MessageBox.Show(ex.ToString());
-            }
-
-            return false;
-        }
-
-        private bool InsertSign(SignModel sign)
-        {
-            _cmdStr = FileHelper.GetSQLString("CreateSigner");
-
-            try
-            {
-                _conn.Open();
-                _command = new OracleCommand(_cmdStr, _conn);
-                _command.Parameters.Add("user_id", sign.UserId);
-                _command.Parameters.Add("create_date", sign.SignDate);
+                _command.Parameters.Add("status", 'W');
                 result = (_command.ExecuteNonQuery() > 0) ? true : false;
                 _conn.Close();
                 return result;
@@ -134,7 +90,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
 
         public ObservableCollection<DeptModel> LoadDeptList()
         {
-            ObservableCollection<DeptModel> _deptList = new ObservableCollection<DeptModel>();
+            ObservableCollection<DeptModel> deptList = new ObservableCollection<DeptModel>();
             _cmdStr = FileHelper.GetSQLString("GetDeptList");
 
             try
@@ -148,7 +104,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
                 {
                     foreach (DataRow row in _dataTable.Rows)
                     {
-                        _deptList.Add(new DeptModel() { DeptId = row["department_id"].ToString(), DeptName = row["department_name"].ToString() });
+                        deptList.Add(new DeptModel() { DeptId = row["department_id"].ToString(), DeptName = row["department_name"].ToString() });
                     }
                 }
                 _conn.Close();
@@ -159,7 +115,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.Form
                 MessageBox.Show(ex.ToString());
             }
 
-            return _deptList;
+            return deptList;
         }
     }
 }

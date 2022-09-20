@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wpf.Ui.Controls;
-using WPF_ME_Sign.ViewModels;
+using WPF_ME_Sign.ViewModels.Main;
 
 namespace WPF_ME_Sign.Views
 {

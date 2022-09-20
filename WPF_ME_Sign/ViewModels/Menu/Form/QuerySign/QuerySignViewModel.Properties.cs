@@ -10,13 +10,16 @@ using WPF_ME_Sign.Models;
 
 namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
 {
-    public partial class QuerySignViewModel : ObservableObject
+    public partial class QuerySignViewModel
     {
-        private string _FromDate;
-        public string FromDate { get => _FromDate; set { _FromDate = value; OnPropertyChanged(); LoadSignList(); } }
+        private DateTime _FromDate;
+        public DateTime FromDate { get => _FromDate; set { _FromDate = value; OnPropertyChanged(); LoadSignList(); } }
 
-        private string _ToDate;
-        public string ToDate { get => _ToDate; set { _ToDate = value; OnPropertyChanged(); LoadSignList(); } }
+        private DateTime _ToDate;
+        public DateTime ToDate { get => _ToDate; set { _ToDate = value; OnPropertyChanged(); LoadSignList(); } }
+
+        private bool _SignShow;
+        public bool SignShow { get => _SignShow; set { _SignShow = value; OnPropertyChanged(); FilterCollection(); } }
 
         private bool _UnsignCheck;
         public bool UnsignCheck { get => _UnsignCheck; set { _UnsignCheck = value; OnPropertyChanged(); FilterCollection(); } }

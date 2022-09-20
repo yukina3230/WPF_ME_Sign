@@ -20,11 +20,11 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private void CreateUserExecute()
         {
-            if (ValidateHelper.DetectFieldEmpty(UserBinding.UserId, Password, UserBinding.UserName, DeptId, UserBinding.Email, RoleId))
+            if (ValidateHelper.DetectFieldEmpty(UserId, Password, UserName, DeptId, Email, RoleId))
             {
-                if (DetectEmailValid(UserBinding.Email))
+                if (DetectEmailValid(Email))
                 {
-                    _createUserService = new CreateUserService(UserBinding.UserId, Password, UserBinding.UserName, DeptId, UserBinding.Email, RoleId, _CreateDate);
+                    _createUserService = new CreateUserService(UserId, Password, UserName, DeptId, Email, RoleId, _CreateDate);
                     if (_createUserService.Create())
                     {
                         MessageBox.Show("Success");
@@ -32,10 +32,10 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
                         (
                             new UserModel()
                             {
-                                UserId = UserBinding.UserId,
-                                UserName = UserBinding.UserName,
+                                UserId = UserId,
+                                UserName = UserName,
                                 DeptName = GetDeptNameById(DeptId),
-                                Email = UserBinding.Email,
+                                Email = Email,
                                 RoleName = GetRoleNameById(RoleId),
                                 CreateDate = _CreateDate.ToString("dd/MM/yyyy"),
                                 Status = "A"

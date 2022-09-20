@@ -1,0 +1,26 @@
+select sign_id,
+    dp.department_name as department_name,
+    form_user_id,
+    form_user_name,
+    line,
+    project_title,
+    score,
+    model,
+    processing,
+    article,
+    describe_problem,
+    improve_problem,
+    picture_Describe_problem,
+    picture_Improve_problem,
+    to_char(me.create_date, 'dd/MM/yyyy') as create_date,
+    manpower_a as manpower_a,
+    ct_a as ct_a,
+    eff_a as eff_a,
+    material_a as material_a,
+    manpower_b as manpower_b,
+    ct_b as ct_b,
+    eff_b as eff_b,
+    material_b as material_b
+from me_sign me
+    left join me_department dp on me.department_id = dp.department_id
+where sign_id = :sign_id

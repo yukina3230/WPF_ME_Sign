@@ -31,7 +31,7 @@
                 </Grid>
                 <st:StackPanel Orientation="Horizontal">
                     <TextBlock Text="Ngày điền biểu:"></TextBlock>
-                    <TextBlock Text="{Binding CreateDate}"></TextBlock>
+                    <TextBlock Text="{Binding SignPreview.CreateDate}"></TextBlock>
                 </st:StackPanel>
                 <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="5">
                     <st:StackPanel Margin="20 40" MarginBetweenChildren="40">
@@ -43,20 +43,20 @@
                             </Grid.ColumnDefinitions>
                             <st:StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Số hiệu:"></TextBlock>
-                                <ui:TextBox Text="{Binding SignId}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.SignId}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Khu vực:"></TextBlock>
-                                <ui:TextBox Text="DeptName" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.DeptName}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Text="Chuyền:"></TextBlock>
-                                <ui:TextBox Text="{Binding Line}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.Line}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                         </Grid>
                         <st:StackPanel Orientation="Horizontal">
                             <TextBlock Text="Chủ đề dự án:"></TextBlock>
-                            <ui:TextBox Text="{Binding ProjectTitle}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                            <TextBox Text="{Binding SignPreview.ProjectTitle}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                         </st:StackPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -66,15 +66,15 @@
                             </Grid.ColumnDefinitions>
                             <st:StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Người đề xuất dự án:"></TextBlock>
-                                <ui:TextBox Text="{Binding FormUserName}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.FormUserName}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Số Thẻ:"></TextBlock>
-                                <ui:TextBox Text="{Binding FormUserId}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.FormUserId}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Text="Điểm:"></TextBlock>
-                                <ui:TextBox Text="{Binding Score}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.Score}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                         </Grid>
                         <Grid>
@@ -85,15 +85,15 @@
                             </Grid.ColumnDefinitions>
                             <st:StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Mã giày/Model:"></TextBlock>
-                                <ui:TextBox Text="{Binding Model}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.Model}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 0 50 0">
                                 <TextBlock Text="Mã/Article:"></TextBlock>
-                                <ui:TextBox Text="{Binding Article}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.Article}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                             <st:StackPanel Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Text="Lưu trình:"></TextBlock>
-                                <ui:TextBox Text="{Binding Processing}" st:StackPanel.Fill="Fill"></ui:TextBox>
+                                <TextBox Text="{Binding SignPreview.Processing}" st:StackPanel.Fill="Fill" IsReadOnly="True"></TextBox>
                             </st:StackPanel>
                         </Grid>
                     </st:StackPanel>
@@ -101,11 +101,11 @@
                 <st:StackPanel MarginBetweenChildren="40">
                     <st:StackPanel>
                         <TextBlock Text="Phân tích hiện trạng (Thuyết minh cụ thể vấn đề):" Margin="0 0 0 20"></TextBlock>
-                        <ui:TextBox Text="{Binding DescribeProblem}" st:StackPanel.Fill="Fill" MinLines="4" AcceptsReturn="True"></ui:TextBox>
+                        <TextBox Text="{Binding SignPreview.DescribeProblem}" st:StackPanel.Fill="Fill" MinLines="4" AcceptsReturn="True" IsReadOnly="True"></TextBox>
                     </st:StackPanel>
                     <st:StackPanel>
                         <TextBlock Text="Đối sách cải thiện (Thuyết minh cụ thể vấn đề):" Margin="0 0 0 20"></TextBlock>
-                        <ui:TextBox Text="{Binding ImproveProblem}" st:StackPanel.Fill="Fill" MinLines="4" AcceptsReturn="True"></ui:TextBox>
+                        <TextBox Text="{Binding SignPreview.ImproveProblem}" st:StackPanel.Fill="Fill" MinLines="4" AcceptsReturn="True" IsReadOnly="True"></TextBox>
                     </st:StackPanel>
                 </st:StackPanel>
                 <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="5">
@@ -119,22 +119,16 @@
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
                                 <TextBlock Text="Tình trạng hiện tại" HorizontalAlignment="Center"></TextBlock>
                                 <Separator></Separator>
-                                <Image Source="{Binding DesctibePicturePath}" Width="200" MinHeight="200"></Image>
+                                <Image Source="{Binding SignPreview.DesctibePicturePath}" Width="200" MinHeight="200"></Image>
                             </st:StackPanel>
-                            <ui:Button Command="{Binding AddDescribePictureCommand}" VerticalAlignment="Center"
-                                       Padding="10" Icon="Add24" FontSize="15" Appearance="Primary">
-                            </ui:Button>
                         </st:StackPanel>
                         <Separator Grid.Column="1" HorizontalAlignment="Center"></Separator>
                         <st:StackPanel Grid.Column="2" Orientation="Horizontal" MarginBetweenChildren="20">
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
                                 <TextBlock Text="Ý kiến đề xuất" HorizontalAlignment="Center"></TextBlock>
                                 <Separator></Separator>
-                                <Image Source="{Binding ImprovePicturePath}" Width="200" MinHeight="200"></Image>
+                                <Image Source="{Binding SignPreview.ImprovePicturePath}" Width="200" MinHeight="200"></Image>
                             </st:StackPanel>
-                            <ui:Button Command="{Binding AddImprovePictureCommand}" VerticalAlignment="Center"
-                                       Padding="10" Icon="Add24" FontSize="15" Appearance="Primary">
-                            </ui:Button>
                         </st:StackPanel>
                     </Grid>
                 </Border>
@@ -172,7 +166,7 @@
                                         <Run Text="Người"></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <ui:TextBox Text="{Binding Manpower_A}"></ui:TextBox>
+                                    <TextBox Text="{Binding SignPreview.Manpower_A}" IsReadOnly="True"></TextBox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="1" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -181,7 +175,7 @@
                                         <Run></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <ui:TextBox Text="{Binding CT_A}"></ui:TextBox>
+                                    <TextBox Text="{Binding SignPreview.CT_A}" IsReadOnly="True"></TextBox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="2" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -190,7 +184,7 @@
                                         <Run></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <ui:TextBox Text="{Binding EFF_A}"></ui:TextBox>
+                                    <TextBox Text="{Binding SignPreview.EFF_A}" IsReadOnly="True"></TextBox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="3" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -199,7 +193,7 @@
                                         <Run Text="Nguyên liệu"></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <ui:TextBox Text="{Binding Material_A}"></ui:TextBox>
+                                    <TextBox Text="{Binding SignPreview.Material_A}" IsReadOnly="True"></TextBox>
                                 </st:StackPanel>
                             </st:AutoGrid>
                         </st:StackPanel>
@@ -226,7 +220,7 @@
                                         <Run Text="Người"></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <ui:TextBox Text="{Binding Manpower_B}"></ui:TextBox>
+                                    <TextBox Text="{Binding SignPreview.Manpower_B}" IsReadOnly="True"></TextBox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="1" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -234,7 +228,7 @@
                                         <LineBreak></LineBreak>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <ui:TextBox Text="{Binding CT_B}"></ui:TextBox>
+                                    <TextBox Text="{Binding SignPreview.CT_B}" IsReadOnly="True"></TextBox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="2" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -242,7 +236,7 @@
                                         <LineBreak></LineBreak>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <ui:TextBox Text="{Binding EFF_B}"></ui:TextBox>
+                                    <TextBox Text="{Binding SignPreview.EFF_B}" IsReadOnly="True"></TextBox>
                                 </st:StackPanel>
                                 <st:StackPanel Grid.Column="3" MarginBetweenChildren="10">
                                     <TextBlock>
@@ -251,13 +245,13 @@
                                         <Run Text="Nguyên liệu"></Run>
                                     </TextBlock>
                                     <Separator></Separator>
-                                    <ui:TextBox Text="{Binding Material_B}"></ui:TextBox>
+                                    <TextBox Text="{Binding SignPreview.Material_B}" IsReadOnly="True"></TextBox>
                                 </st:StackPanel>
                             </st:AutoGrid>
                         </st:StackPanel>
                     </Border>
                 </Grid>
-                <Border Grid.Column="1" Margin="0 0 5 0" Padding="10" BorderBrush="LightGray" BorderThickness="2">
+                <Border Grid.Column="1" Margin="0 0 5 0" Padding="20" BorderBrush="LightGray" BorderThickness="2">
                     <Grid Margin="20 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -279,30 +273,68 @@
                         </Grid.Resources>
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="Người đề nghị"></TextBlock>
+                            <TextBlock></TextBlock>
+                            <Separator Margin="10"></Separator>
+                            <st:StackPanel MarginBetweenChildren="10">
+                                <TextBlock Text="{Binding SignPreview.RequestUserId}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.RequestUserName}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.RequestSignDate}"></TextBlock>
+                            </st:StackPanel>
                         </StackPanel>
                         <Separator Grid.Column="1" HorizontalAlignment="Center"></Separator>
                         <StackPanel Grid.Column="2">
                             <TextBlock Text="Chủ quản đơn vị"></TextBlock>
+                            <TextBlock></TextBlock>
+                            <Separator Margin="10"></Separator>
+                            <st:StackPanel MarginBetweenChildren="10">
+                                <TextBlock Text="{Binding SignPreview.DeptUserId}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.DeptUserName}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.DeptSignDate}"></TextBlock>
+                            </st:StackPanel>
                         </StackPanel>
                         <Separator Grid.Column="3" HorizontalAlignment="Center"></Separator>
                         <StackPanel Grid.Column="4">
                             <TextBlock Text="Chủ quản đơn vị"></TextBlock>
                             <TextBlock Text="QC"></TextBlock>
+                            <Separator Margin="10"></Separator>
+                            <st:StackPanel MarginBetweenChildren="10">
+                                <TextBlock Text="{Binding SignPreview.QCUserId}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.QCUserName}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.QCSignDate}"></TextBlock>
+                            </st:StackPanel>
                         </StackPanel>
                         <Separator Grid.Column="5" HorizontalAlignment="Center"></Separator>
                         <StackPanel Grid.Column="6">
                             <TextBlock Text="Chủ quản đơn vị"></TextBlock>
                             <TextBlock Text="Tech sản xuất"></TextBlock>
+                            <Separator Margin="10"></Separator>
+                            <st:StackPanel MarginBetweenChildren="10">
+                                <TextBlock Text="{Binding SignPreview.TechUserId}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.TechUserName}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.TechSignDate}"></TextBlock>
+                            </st:StackPanel>
                         </StackPanel>
                         <Separator Grid.Column="7" HorizontalAlignment="Center"></Separator>
                         <StackPanel Grid.Column="8">
                             <TextBlock Text="Chủ quản cấp cao"></TextBlock>
                             <TextBlock Text="Production"></TextBlock>
+                            <Separator Margin="10"></Separator>
+                            <st:StackPanel MarginBetweenChildren="10">
+                                <TextBlock Text="{Binding SignPreview.ProductionUserId}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.ProductionUserName}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.ProductionSignDate}"></TextBlock>
+                            </st:StackPanel>
                         </StackPanel>
                         <Separator Grid.Column="9" HorizontalAlignment="Center"></Separator>
                         <StackPanel Grid.Column="10">
                             <TextBlock Text="Chủ quản đơn vị"></TextBlock>
                             <TextBlock Text="ME"></TextBlock>
+                            <Separator Margin="10"></Separator>
+                            <st:StackPanel MarginBetweenChildren="10">
+                                <TextBlock Text="{Binding SignPreview.MEUserId}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.MEUserName}"></TextBlock>
+                                <TextBlock Text="{Binding SignPreview.MESignDate}"></TextBlock>
+                            </st:StackPanel>
                         </StackPanel>
                     </Grid>
                 </Border>

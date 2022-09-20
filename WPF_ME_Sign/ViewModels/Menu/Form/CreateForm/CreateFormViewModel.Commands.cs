@@ -15,9 +15,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
     {
         private OpenFileDialog _fileDialog;
         private CreateFormService _createFormService;
+        private QuerySignService _querySignService;
 
         public RelayCommand CreateFormCommand { get; }
-        public RelayCommand ExportCommand { get; }
         public RelayCommand AddDescribePictureCommand { get; }
         public RelayCommand AddImprovePictureCommand { get; }
 
@@ -25,20 +25,14 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
         {
             if (DetectFieldEmpty())
             {
-                _createFormService = new CreateFormService(GetFormValues(), GetKPIValues(), GetSignValues());
+                _createFormService = new CreateFormService(GetFormValues());
                 if (_createFormService.Create())
                 {
+                    _querySignService.Sign(GetSignModel(SignId));
                     MessageBox.Show("Success");
+                    Report(GetFormValues());
                 }
                 else MessageBox.Show("Fail");
-            }
-        }
-
-        private void ExportExecute()
-        {
-            if (DetectFieldEmpty())
-            {
-                _createFormService.Report(GetFormValues(), GetKPIValues());
             }
         }
 
