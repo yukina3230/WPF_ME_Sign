@@ -16,8 +16,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
     {
         public CreateFormViewModel()
         {
-            ClearTempFolder();
-
             CreateDate = DateTime.Now.ToString("dd/MM/yyyy");
             FormUserId = InfoHelper.UserId;
             FormUserName = InfoHelper.UserName;
@@ -52,8 +50,8 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
                 Processing = Processing,
                 DescribeProblem = DescribeProblem,
                 ImproveProblem = ImproveProblem,
-                DesctibePicturePath = _createFormService.CopyImageToServer(SignId, DesctibePicturePath, "D"),
-                ImprovePicturePath = _createFormService.CopyImageToServer(SignId, ImprovePicturePath, "I"),
+                DesctibePicturePath = ReportHelper.CopyImageToServer(SignId, DesctibePicturePath, "D"),
+                ImprovePicturePath = ReportHelper.CopyImageToServer(SignId, ImprovePicturePath, "I"),
                 Manpower_A = Manpower_A,
                 CT_A = CT_A,
                 EFF_A = EFF_A,
@@ -95,31 +93,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             );
         }
 
-        private string CopyTempImage(string sourceFile)
-        {
-            string destinationFile = FileHelper.GetTempPath(sourceFile);
-
-            try
-            {
-                File.Copy(sourceFile, destinationFile, true);
-                return destinationFile;
-            }
-            catch (IOException iox)
-            {
-                Console.WriteLine(iox.Message);
-            }
-
-            return "";
-        }
-
-        private void ClearTempFolder()
-        {
-            DirectoryInfo dInfo = new DirectoryInfo(FileHelper.GetTempPath(""));
-
-            foreach (FileInfo file in dInfo.EnumerateFiles())
-            {
-                file.Delete();
-            }
-        }
+        
     }
 }

@@ -19,11 +19,12 @@ namespace WPF_ME_Sign.Models.Services.Login
 
         public bool Login(string userId, string password) => _loginRepository.LoginById(userId, password) == userId ? true : false;
 
-        public void InsertGlobalInfo(string userId)
+        public void InsertGlobalInfo(string userId, string passwordText)
         {
             InfoHelper.UserId = userId;
             InfoHelper.UserName = _loginRepository.GetUserNamebyId(userId);
             InfoHelper.RoleId = _loginRepository.GetRoleIdbyId(userId);
+            InfoHelper.EncodedPassword = EncodeHelper.EncodeString(passwordText);
         }
     }
 }

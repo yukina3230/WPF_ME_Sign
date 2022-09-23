@@ -9,6 +9,7 @@
     <!--StartupUri="Views/Menu/Form/QuerySignView.xaml"-->
     <!--StartupUri="Views/Menu/Form/CreateFormView.xaml"-->
     <!--StartupUri="Views/Menu/User/CreateUserView.xaml"-->
+    <!--StartupUri="Views/Menu/User/ChangePasswordView.xaml"-->
     <!--StartupUri="Views/Login/LoginView.xaml"-->
     <!--StartupUri="Views/Main/MainView.xaml"-->
     <Application.Resources>

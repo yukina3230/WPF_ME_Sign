@@ -11,7 +11,7 @@ namespace WPF_ME_Sign.Models.Helpers
     {
         public static string ProjectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
 
-        public static string ImageServerPath = @"\\10.1.0.112\ME_Images\"; 
+        public static string ImageServerPath = @"\\10.1.0.112\ME_Images\";
 
         public static string GetSQLString(string sqlFileName)
         {

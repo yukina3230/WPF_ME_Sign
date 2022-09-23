@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WPF_ME_Sign.Models;
+using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.Models.Services.Share;
 
 namespace WPF_ME_Sign.ViewModels.Share.PreviewSign
@@ -16,8 +17,9 @@ namespace WPF_ME_Sign.ViewModels.Share.PreviewSign
         {
             _previewSignService = new PreviewSignService();
             SignPreview = new SignPreviewModel();
-
             SignPreview = _previewSignService.GetPreview(signId);
         }
+
+        public void ClearTempFoler() => ReportHelper.ClearTempFolder();
     }
 }

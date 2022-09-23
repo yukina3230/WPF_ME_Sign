@@ -35,5 +35,9 @@ namespace WPF_ME_Sign.Views.Share
             _previewSignViewModel = new PreviewSignViewModel(signId);
             DataContext = _previewSignViewModel;
         }
+
+        private void titleBar_CloseClicked(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

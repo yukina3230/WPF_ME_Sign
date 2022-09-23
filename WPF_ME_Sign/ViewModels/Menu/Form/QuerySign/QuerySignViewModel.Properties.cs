@@ -25,7 +25,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
         public bool UnsignCheck { get => _UnsignCheck; set { _UnsignCheck = value; OnPropertyChanged(); FilterCollection(); } }
 
         private bool _SignedCheck;
-        public bool SignedCheck { get => _SignedCheck; set { _SignedCheck = value; OnPropertyChanged(); FilterCollection(); } }
+        public bool SignedCheck { get => _SignedCheck; set { _SignedCheck = value; _SignShow = false; OnPropertyChanged(); FilterCollection(); } }
 
         private ObservableCollection<SignModel> _SignList;
         public ObservableCollection<SignModel> SignList { get => _SignList; set { _SignList = value; OnPropertyChanged(); } }

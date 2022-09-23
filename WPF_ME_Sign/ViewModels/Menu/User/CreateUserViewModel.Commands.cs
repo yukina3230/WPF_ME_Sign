@@ -17,6 +17,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
         public RelayCommand EditUserCommand { get; }
         public RelayCommand DeleteUserCommand { get; }
         public RelayCommand CleanCommand { get; }
+        public RelayCommand ChangePasswordCommand { get; }
 
         private void CreateUserExecute()
         {
@@ -79,6 +80,23 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
             Password = "";
             UserName = "";
             Email = "";
+        }
+
+        private void ChangePasswordExecute()
+        {
+            if (!ValidateHelper.DetectFieldEmpty(CurrentPassword, NewPassword, RetypeNewPassword)) return;
+            if (EncodeHelper.EncodeString(CurrentPassword) != InfoHelper.EncodedPassword) { MessageBox.Show("The current password is incorrect"); return; }
+            if (NewPassword != RetypeNewPassword) { MessageBox.Show("Retype password does not match"); return; }
+            if (EncodeHelper.EncodeString(NewPassword) == InfoHelper.EncodedPassword) { MessageBox.Show("Try a different password"); return; }
+
+            if (_createUserService.UpdatePassword(InfoHelper.UserId, NewPassword))
+            {
+                MessageBox.Show($"Done");
+            }
+            else
+            {
+                MessageBox.Show($"Fail");
+            }
         }
     }
 }

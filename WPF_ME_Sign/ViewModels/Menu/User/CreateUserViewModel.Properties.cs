@@ -59,5 +59,15 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
 
         private UserModel _UserBinding;
         public UserModel UserBinding { get => _UserBinding; set { _UserBinding = value; OnPropertyChanged(); BindTextBox(); } }
+
+        //ChangePasswordView
+        private string _CurrentPassword;
+        public string CurrentPassword { get => _CurrentPassword; set { _CurrentPassword = value; OnPropertyChanged(); } }
+
+        private string _NewPassword;
+        public string NewPassword { get => _NewPassword; set { _NewPassword = value; OnPropertyChanged(); } }
+
+        private string _RetypeNewPassword;
+        public string RetypeNewPassword { get => _RetypeNewPassword; set { _RetypeNewPassword = value; OnPropertyChanged(); } }
     }
 }

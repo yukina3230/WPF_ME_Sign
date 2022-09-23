@@ -44,6 +44,6 @@ namespace WPF_ME_Sign.Models.Services.Menu.User
         public ObservableCollection<RoleModel> LoadRoleList() => _createUserRepository.LoadRoleList();
         public ObservableCollection<UserModel> LoadUserList() => _createUserRepository.LoadUserList();
 
-        
+        public bool UpdatePassword(string userId, string passwordText) => _createUserRepository.UpdatePassword(userId, passwordText);
     }
 }

@@ -17,7 +17,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
     {
         private string _connStr;
         private string _cmdStr;
-        private bool result = false;
+        private bool result;
         private OracleConnection _conn;
         private OracleCommand _command;
         private OracleDataAdapter _dataAdapter;
@@ -31,7 +31,8 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
 
         public bool AddNewUser(UserModel user)
         {
-            _cmdStr = FileHelper.GetSQLString("CreateUser");
+            _cmdStr = FileHelper.GetSQLString("User\\CreateUser");
+            result = false;
 
             try
             {
@@ -55,12 +56,13 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 MessageBox.Show(ex.ToString());
             }
 
-            return false;
+            return result;
         }
 
         public bool EditUser(string Password, string UserName, string Email, string DeptId, string RoleId, DateTime CreateDate, string Me_UserId)
         {
-            _cmdStr = FileHelper.GetSQLString("UpdateUser");
+            _cmdStr = FileHelper.GetSQLString("User\\UpdateUser");
+            result = false;
 
             try
             {
@@ -83,13 +85,13 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 MessageBox.Show(ex.ToString());
             }
 
-            return false;
+            return result;
         }
 
         public bool SuspendUser(string userId)
         {
-            bool cmdResult = false;
-            _cmdStr = FileHelper.GetSQLString("SuspendUser");
+            _cmdStr = FileHelper.GetSQLString("User\\SuspendUser");
+            result = false;
 
             try
             {
@@ -106,7 +108,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
                 MessageBox.Show(ex.ToString());
             }
 
-            return false;
+            return result;
         }
 
         public ObservableCollection<DeptModel> LoadDeptList()
@@ -142,7 +144,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
         public ObservableCollection<RoleModel> LoadRoleList()
         {
             ObservableCollection<RoleModel> _deptList = new ObservableCollection<RoleModel>();
-            _cmdStr = FileHelper.GetSQLString("GetRoleList");
+            _cmdStr = FileHelper.GetSQLString("User\\GetRoleList");
 
             try
             {
@@ -172,7 +174,7 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
         public ObservableCollection<UserModel> LoadUserList()
         {
             ObservableCollection<UserModel> _userList = new ObservableCollection<UserModel>();
-            _cmdStr = FileHelper.GetSQLString("GetUserList");
+            _cmdStr = FileHelper.GetSQLString("User\\GetUserList");
 
             try
             {
@@ -213,6 +215,30 @@ namespace WPF_ME_Sign.Models.Repositories.Menu.User
             }
 
             return _userList;
+        }
+
+        public bool UpdatePassword(string userId, string passwordText)
+        {
+            _cmdStr = FileHelper.GetSQLString("User\\UpdatePassword");
+            result = false;
+
+            try
+            {
+                _conn.Open();
+                _command = new OracleCommand(_cmdStr, _conn);
+                _command.Parameters.Add("userId", userId);
+                _command.Parameters.Add("password", EncodeHelper.EncodeString(passwordText));
+                result = (_command.ExecuteNonQuery() > 0) ? true : false;
+                _conn.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _conn.Close();
+                MessageBox.Show(ex.ToString());
+            }
+
+            return result;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WPF_ME_Sign.Models;
+using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.Models.Services.Menu.Form;
 using WPF_ME_Sign.Views.Share;
 
@@ -30,7 +31,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
         {
             var a = o as SignModel;
             string signId = a.SignId;
-            Report(_previewSignService.GetPreview(signId));
+            ReportHelper.Report(_previewSignService.GetPreview(signId));
         }
 
         private void SignExectute(object o)

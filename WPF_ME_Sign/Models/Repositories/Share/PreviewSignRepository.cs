@@ -16,7 +16,7 @@ namespace WPF_ME_Sign.Models.Repositories.Share
     {
         private string _connStr;
         private string _cmdStr;
-        private bool result = false;
+        private bool result;
         private OracleConnection _conn;
         private OracleCommand _command;
         private OracleDataAdapter _dataAdapter;
@@ -58,9 +58,9 @@ namespace WPF_ME_Sign.Models.Repositories.Share
                             Processing = row["processing"].ToString(),
                             Article = row["article"].ToString(),
                             DescribeProblem = row["describe_problem"].ToString(),
-                            DesctibePicturePath = "",
+                            DesctibePicturePath = ReportHelper.CopyTempImage(row["picture_describe_problem"].ToString()),
                             ImproveProblem = row["improve_problem"].ToString(),
-                            ImprovePicturePath = "",
+                            ImprovePicturePath = ReportHelper.CopyTempImage(row["picture_improve_problem"].ToString()),
                             CreateDate = row["create_date"].ToString(),
                             Manpower_A = row["manpower_a"].ToString(),
                             CT_A = row["ct_a"].ToString(),
@@ -129,7 +129,7 @@ namespace WPF_ME_Sign.Models.Repositories.Share
 
         public bool CheckManagerUser(string userId)
         {
-            bool result = false;
+            result = false;
             _cmdStr = FileHelper.GetSQLString("GetUserbyRole");
 
             try

@@ -30,7 +30,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
                 {
                     _querySignService.Sign(GetSignModel(SignId));
                     MessageBox.Show("Success");
-                    Report(GetFormValues());
+                    ReportHelper.Report(GetFormValues());
                 }
                 else MessageBox.Show("Fail");
             }
@@ -42,7 +42,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             {
                 using (var stream = _fileDialog.OpenFile())
                 {
-                    if (_fileDialog.FileName != ImprovePicturePath) DesctibePicturePath = _fileDialog.FileName; DesctibePicturePathTemp = CopyTempImage(_fileDialog.FileName);
+                    if (_fileDialog.FileName != ImprovePicturePath) DesctibePicturePath = _fileDialog.FileName; DesctibePicturePathTemp = ReportHelper.CopyTempImage(_fileDialog.FileName);
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             {
                 using (var stream = _fileDialog.OpenFile())
                 {
-                    if (_fileDialog.FileName != DesctibePicturePath) ImprovePicturePath = _fileDialog.FileName; ImprovePicturePathTemp = CopyTempImage(_fileDialog.FileName);
+                    if (_fileDialog.FileName != DesctibePicturePath) ImprovePicturePath = _fileDialog.FileName; ImprovePicturePathTemp = ReportHelper.CopyTempImage(_fileDialog.FileName);
                 }
             }
         }

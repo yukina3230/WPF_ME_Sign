@@ -29,25 +29,23 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
             FromDate = DateTime.Today;
             ToDate = DateTime.Today;
 
-            SignList = _querySignService.LoadSignList(ConvertDate(FromDate), ConvertDate(ToDate));
+            SignList = _querySignService.LoadSignList(FromDate.ToString("dd/MM/yyyy"), ToDate.ToString("dd/MM/yyyy"));
             SignFilterList = CollectionViewSource.GetDefaultView(SignList);
             SignFilterList.Filter = new Predicate<object>(Filter);
+            FilterCollection();
 
             PreviewCommand = new RelayCommand<object>(o => PreviewExectute(o), o => true);
             ExportCommand = new RelayCommand<object>(o => ExportExectute(o), o => true);
             SignCommand = new RelayCommand<object>(o => SignExectute(o), o => true);
         }
 
-        private bool SignVisibility(string userId)
-        {
-            return _previewSignService.SignCheck(userId);
-        }
+        private bool SignVisibility(string userId) => _previewSignService.SignCheck(userId) && UnsignCheck;
 
         private void LoadSignList()
         {
             if (FromDate != null && ToDate != null)
             {
-                SignList = _querySignService.LoadSignList(ConvertDate(FromDate), ConvertDate(ToDate));
+                SignList = _querySignService.LoadSignList(FromDate.ToString("dd/MM/yyyy"), ToDate.ToString("dd/MM/yyyy"));
                 SignFilterList = CollectionViewSource.GetDefaultView(SignList);
                 SignFilterList.Filter = new Predicate<object>(Filter);
             }
@@ -91,16 +89,9 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.QuerySign
             return false;
         }
 
-        private string ConvertDate(DateTime date)
-        {
-            IFormatProvider culture = new CultureInfo("fr-FR", true);
-            //return DateTime.ParseExact(date, "dd/MM/yyyy", culture).ToShortDateString();
-            return date.ToString("dd/MM/yyyy", culture);
-        }
-
         private void UpdateSignStatus(string signId)
         {
-            SignList.Where(x => x.SignId == signId).ForEach(x => x.SignStatus = "S");
+            SignList.Where(x => x.SignId == signId).ForEach(x => x.SignStatus = "D");
             FilterCollection();
         }
     }

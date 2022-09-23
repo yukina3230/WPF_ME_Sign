@@ -11,5 +11,6 @@ namespace WPF_ME_Sign.Models.Helpers
         public static string UserId;
         public static string UserName;
         public static string RoleId;
+        public static string EncodedPassword;
     }
 }

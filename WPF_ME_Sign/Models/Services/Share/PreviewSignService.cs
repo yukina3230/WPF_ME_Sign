@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.Models.Repositories.Share;
 
 namespace WPF_ME_Sign.Models.Services.Share

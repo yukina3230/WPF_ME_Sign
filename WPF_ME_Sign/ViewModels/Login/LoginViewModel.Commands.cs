@@ -22,7 +22,7 @@ namespace WPF_ME_Sign.ViewModels.Login
             {
                 if (_loginService.Login(UserId, Password))
                 {
-                    _loginService.InsertGlobalInfo(UserId);
+                    _loginService.InsertGlobalInfo(UserId, Password);
                     MainView main = new MainView();
                     App.Current.MainWindow = main;
                     window.Close();

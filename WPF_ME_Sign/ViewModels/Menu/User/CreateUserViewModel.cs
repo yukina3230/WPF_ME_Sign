@@ -36,6 +36,7 @@ namespace WPF_ME_Sign.ViewModels.Menu.User
             EditUserCommand = new RelayCommand(EditUser, () => true);
             DeleteUserCommand = new RelayCommand(DeleteUserExecute, () => true);
             CleanCommand = new RelayCommand(CleanExecute, () => true);
+            ChangePasswordCommand = new RelayCommand(ChangePasswordExecute, () => true);
         }
 
         private bool DetectUserIdExist(string userId)

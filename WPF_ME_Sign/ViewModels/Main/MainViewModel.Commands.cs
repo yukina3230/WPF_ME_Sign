@@ -44,6 +44,8 @@ namespace WPF_ME_Sign.ViewModels.Main
 
         private void MenuChangePasswordExecute()
         {
+            ChangePasswordView view = new ChangePasswordView();
+            view.Show();
         }
     }
 }
