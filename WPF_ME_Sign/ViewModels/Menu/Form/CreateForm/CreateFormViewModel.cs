@@ -26,9 +26,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             _fileDialog.Multiselect = false;
             _createFormService = new CreateFormService();
             _querySignService = new QuerySignService();
-
-            AddDescribePictureCommand = new RelayCommand(AddDescribePath);
-            AddImprovePictureCommand = new RelayCommand(AddImprovePath);
             CreateFormCommand = new RelayCommand(CreateFormExecute);
             DeptList = _createFormService.LoadDeptList();
         }

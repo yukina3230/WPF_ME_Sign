@@ -120,9 +120,9 @@
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
                                 <TextBlock Text="Tình trạng hiện tại" HorizontalAlignment="Center"></TextBlock>
                                 <Separator></Separator>
-                                <Image Source="{Binding DesctibePicturePath}" Width="200" MinHeight="200"></Image>
+                                <Image x:Name="imgD" Width="200" MinHeight="200"></Image>
                             </st:StackPanel>
-                            <ui:Button Command="{Binding AddDescribePictureCommand}" VerticalAlignment="Center"
+                            <ui:Button x:Name="btnImageD" Click="btnImageD_Click" VerticalAlignment="Center"
                                        Padding="10" Icon="Add24" FontSize="15" Appearance="Primary">
                             </ui:Button>
                         </st:StackPanel>
@@ -131,9 +131,9 @@
                             <st:StackPanel MarginBetweenChildren="20" st:StackPanel.Fill="Fill">
                                 <TextBlock Text="Ý kiến đề xuất" HorizontalAlignment="Center"></TextBlock>
                                 <Separator></Separator>
-                                <Image Source="{Binding ImprovePicturePath}" Width="200" MinHeight="200"></Image>
+                                <Image x:Name="imgI" Width="200" MinHeight="200"></Image>
                             </st:StackPanel>
-                            <ui:Button Command="{Binding AddImprovePictureCommand}" VerticalAlignment="Center"
+                            <ui:Button x:Name="btnImageI" Click="btnImageI_Click" VerticalAlignment="Center"
                                        Padding="10" Icon="Add24" FontSize="15" Appearance="Primary">
                             </ui:Button>
                         </st:StackPanel>

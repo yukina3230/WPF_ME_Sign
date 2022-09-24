@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wpf.Ui.Controls;
 using WPF_ME_Sign.Models;
+using WPF_ME_Sign.Models.Helpers;
 using WPF_ME_Sign.ViewModels.Share.PreviewSign;
 
 namespace WPF_ME_Sign.Views.Share
@@ -34,10 +36,9 @@ namespace WPF_ME_Sign.Views.Share
             InitializeComponent();
             _previewSignViewModel = new PreviewSignViewModel(signId);
             DataContext = _previewSignViewModel;
-        }
 
-        private void titleBar_CloseClicked(object sender, RoutedEventArgs e)
-        {
+            imgD.Source = ReportHelper.GetImage(_previewSignViewModel.SignPreview.DesctibePicturePath);
+            imgI.Source = ReportHelper.GetImage(_previewSignViewModel.SignPreview.ImprovePicturePath);
         }
     }
 }

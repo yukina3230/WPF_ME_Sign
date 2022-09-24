@@ -18,8 +18,6 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
         private QuerySignService _querySignService;
 
         public RelayCommand CreateFormCommand { get; }
-        public RelayCommand AddDescribePictureCommand { get; }
-        public RelayCommand AddImprovePictureCommand { get; }
 
         private void CreateFormExecute()
         {
@@ -36,24 +34,24 @@ namespace WPF_ME_Sign.ViewModels.Menu.Form.CreateForm
             }
         }
 
-        private void AddDescribePath()
+        public void AddDescribePath()
         {
             if ((bool)_fileDialog.ShowDialog())
             {
                 using (var stream = _fileDialog.OpenFile())
                 {
-                    if (_fileDialog.FileName != ImprovePicturePath) DesctibePicturePath = _fileDialog.FileName; DesctibePicturePathTemp = ReportHelper.CopyTempImage(_fileDialog.FileName);
+                    if (_fileDialog.FileName != ImprovePicturePath) DesctibePicturePath = _fileDialog.FileName;
                 }
             }
         }
 
-        private void AddImprovePath()
+        public void AddImprovePath()
         {
             if ((bool)_fileDialog.ShowDialog())
             {
                 using (var stream = _fileDialog.OpenFile())
                 {
-                    if (_fileDialog.FileName != DesctibePicturePath) ImprovePicturePath = _fileDialog.FileName; ImprovePicturePathTemp = ReportHelper.CopyTempImage(_fileDialog.FileName);
+                    if (_fileDialog.FileName != DesctibePicturePath) ImprovePicturePath = _fileDialog.FileName;
                 }
             }
         }

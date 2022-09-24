@@ -19,7 +19,5 @@ namespace WPF_ME_Sign.ViewModels.Share.PreviewSign
             SignPreview = new SignPreviewModel();
             SignPreview = _previewSignService.GetPreview(signId);
         }
-
-        public void ClearTempFoler() => ReportHelper.ClearTempFolder();
     }
 }

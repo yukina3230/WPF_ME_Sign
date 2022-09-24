@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using WPF_ME_Sign.ViewModels.Share.PreviewSign;
 
 namespace WPF_ME_Sign.Models.Helpers
 {
@@ -70,34 +72,15 @@ namespace WPF_ME_Sign.Models.Helpers
             return "";
         }
 
-        public static string CopyTempImage(string sourceFile)
+        public static BitmapImage GetImage(string imagePath)
         {
-            string destinationFile = FileHelper.GetTempPath(sourceFile);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.CacheOption = BitmapCacheOption.OnLoad;
+            image.UriSource = new Uri(imagePath);
+            image.EndInit();
 
-            if (!File.Exists(destinationFile))
-            {
-                try
-                {
-                    File.Copy(sourceFile, destinationFile, true);
-                    return sourceFile;
-                }
-                catch (IOException iox)
-                {
-                    throw iox;
-                }
-            }
-
-            return destinationFile;
-        }
-
-        public static void ClearTempFolder()
-        {
-            DirectoryInfo dInfo = new DirectoryInfo(FileHelper.GetTempPath(""));
-
-            foreach (FileInfo file in dInfo.EnumerateFiles())
-            {
-                file.Delete();
-            }
+            return image;
         }
     }
 }
